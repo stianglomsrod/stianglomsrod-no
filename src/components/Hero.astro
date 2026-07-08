@@ -1,0 +1,490 @@
+---
+import now from '../../now.json';
+
+/* Hero med låst innhold (PRD Constraints + Done 2–5).
+   Statisk kodedel er tegn-for-tegn fra spec; // WIP:-kommentarene og
+   «nå:»-radene rendres fra now.json ved byggetid. */
+
+const bokstaver = [
+  { c: 's', w: 104, farge: 'var(--term-groenn)' },
+  { c: 't', w: 98, farge: 'var(--aksent-1)' },
+  { c: 'i', w: 108, farge: 'var(--term-magenta)' },
+  { c: 'a', w: 96, farge: 'var(--konst)' },
+  { c: 'n', w: 106, farge: 'var(--aksent-2)' },
+];
+const bokstaver2 = [
+  { c: 'g', w: 100, farge: 'var(--aksent-1)' },
+  { c: 'l', w: 108, farge: 'var(--term-groenn)' },
+  { c: 'o', w: 96, farge: 'var(--term-magenta)' },
+  { c: 'm', w: 105, farge: 'var(--aksent-2)' },
+  { c: 's', w: 99, farge: 'var(--konst)' },
+  { c: 'r', w: 107, farge: 'var(--term-groenn)' },
+  { c: 'ø', w: 97, farge: 'var(--aksent-1)' },
+  { c: 'd', w: 105, farge: 'var(--term-magenta)' },
+];
+---
+
+<section class="hero" aria-labelledby="hero-h1">
+  <h1 id="hero-h1" class="sr-only">
+    Stian Glomsrød — lærer på vei inn i utviklerrollen. Lærer programmering og
+    agentisk KI parallelt, og søker jobb som {now.soker}.
+  </h1>
+
+  <div class="badges">
+    <span class="chip" style="--i: 0">
+      <span class="chip-label">status</span><span class="chip-verdi fylt">søker aktivt</span>
+    </span>
+    <span class="chip" style="--i: 1">
+      <span class="chip-label">roller</span><span class="chip-verdi">{now.soker}</span>
+    </span>
+    <span class="chip" style="--i: 2">
+      <span class="chip-label">build</span><span class="chip-verdi fylt">passing</span>
+    </span>
+  </div>
+
+  <p class="navn" aria-hidden="true">
+    <span class="ord">
+      {bokstaver.map((b) => (
+        <span class="bokstav" style={`--w: ${b.w}; --hovc: ${b.farge}`}>{b.c}</span>
+      ))}
+    </span><span class="mellomrom"></span><span class="ord">
+      {bokstaver2.map((b) => (
+        <span class="bokstav" style={`--w: ${b.w}; --hovc: ${b.farge}`}>{b.c}</span>
+      ))}<span class="markoer markoer-navn" aria-hidden="true"></span>
+    </span>
+  </p>
+
+  <p class="intro">
+    Lærer på vei inn i utviklerrollen. Bygger ekte ting med agentisk KI — og
+    <span class="uthev">søker jobb mens du leser dette</span>. Siden er både
+    CV-en og verkstedet.
+  </p>
+
+  <p class="puls-linje">
+    <span class="puls-dot" aria-hidden="true"></span>
+    <span class="puls-tekst">tilgjengelig for intervju</span>
+    <span class="puls-detalj">· Halden / remote · svarer &lt; 24t</span>
+  </p>
+
+  <div class="kodeboks">
+    <div class="kodeflate" translate="no">
+      <div class="kodelinje"><span class="kw">const</span> jobb <span class="kw">=</span> <span class="kw">await</span> <span class="fn">Promise.all</span>([</div>
+      <div class="kodelinje innrykk">
+        <button
+          type="button"
+          class="fn-knapp"
+          data-naa-toggle
+          aria-expanded="false"
+          aria-controls="naa-fullstack"
+        >lærProgrammering</button>(), <span class="komm">// WIP: {now.fullstack}</span>
+      </div>
+      <div class="naa-rad" id="naa-fullstack" data-open="false">
+        <div class="naa-inner" data-naa-innhold aria-hidden="true">
+          <span class="naa-label">nå:</span>
+          <span class="naa-verdi">{now.fullstack}</span>
+          <span class="naa-kilde">· fra now.json</span>
+        </div>
+      </div>
+      <div class="kodelinje innrykk">
+        <button
+          type="button"
+          class="fn-knapp"
+          data-naa-toggle
+          aria-expanded="false"
+          aria-controls="naa-ki"
+        >lærKI</button>(), <span class="komm">// WIP: {now.ki}</span>
+      </div>
+      <div class="naa-rad" id="naa-ki" data-open="false">
+        <div class="naa-inner" data-naa-innhold aria-hidden="true">
+          <span class="naa-label">nå:</span>
+          <span class="naa-verdi">{now.ki}</span>
+          <span class="naa-kilde">· fra now.json</span>
+        </div>
+      </div>
+      <div class="kodelinje">]);</div>
+    </div>
+    <div class="terminal" translate="no">
+      <div class="termlinje"><span class="t-groenn">dev@null</span> <span class="t-magenta">MINGW64</span> <span class="t-teal">~/src</span> <span class="t-cyan">(HEAD detached)</span></div>
+      <div class="termlinje">$ node</div>
+      <div class="termlinje">&gt; jobb</div>
+      <div class="termlinje" aria-live="polite">Promise {'{'} <a
+          href="/om#kontakt"
+          id="pending-cta"
+          class="pending"
+          aria-label="<pending> — resolve promisen: ta kontakt"
+        >&lt;pending&gt;</a> {'}'}</div>
+      <div class="termlinje">&gt;<span class="markoer markoer-term" aria-hidden="true"></span></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-5);
+    padding-top: var(--s-8);
+  }
+
+  /* --- Badges (intro-sekvens: inn fra 120ms, staggered 40ms) --- */
+  .badges {
+    display: flex;
+    gap: var(--s-2);
+    flex-wrap: wrap;
+  }
+
+  .chip {
+    display: inline-flex;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--linje);
+    opacity: 0;
+    animation: chip-inn 240ms var(--ease) forwards;
+    animation-delay: calc(120ms + var(--i) * 40ms);
+  }
+
+  .chip-label {
+    background: var(--badge-bg);
+    color: var(--badge-tekst);
+    padding: 4px 8px;
+  }
+
+  .chip-verdi {
+    color: var(--tekst);
+    padding: 4px 8px;
+  }
+
+  .chip-verdi.fylt {
+    background: var(--signal);
+    color: var(--bg);
+    font-weight: 600;
+  }
+
+  @keyframes chip-inn {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* --- Navnetrekk (Anybody, variabel bredde; wdth 60 → basis fra 280ms) --- */
+  .navn {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: var(--tekst-display);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    text-transform: lowercase;
+    color: var(--tekst);
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .bokstav {
+    font-stretch: calc(var(--w) * 1%);
+    transition: font-stretch 300ms var(--ease), color 300ms var(--ease);
+    animation: bokstav-inn var(--dur-scene) var(--ease) 280ms backwards;
+  }
+
+  .bokstav:hover {
+    font-stretch: 135%;
+    color: var(--hovc);
+  }
+
+  @keyframes bokstav-inn {
+    from {
+      font-stretch: 60%;
+    }
+  }
+
+  .ord {
+    display: inline-flex;
+    align-items: baseline;
+    white-space: nowrap;
+  }
+
+  .mellomrom {
+    width: 0.32em;
+  }
+
+  /* --- Markør ▮ (blink 1.06s steps(2); reduced motion → statisk fylt) --- */
+  .markoer {
+    display: inline-block;
+    animation: blink 1.06s steps(2, start) infinite;
+  }
+
+  .markoer-navn {
+    width: 0.45em;
+    height: 0.78em;
+    margin-left: 0.08em;
+    background: var(--signal);
+    align-self: center;
+  }
+
+  .markoer-term {
+    width: 8px;
+    height: 1.1em;
+    margin-left: 3px;
+    vertical-align: text-bottom;
+    background: var(--kode-tekst);
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  /* --- Intro og puls --- */
+  .intro {
+    margin: 0;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--dempet);
+    max-width: 56ch;
+  }
+
+  .uthev {
+    color: var(--tekst);
+  }
+
+  .puls-linje {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+  }
+
+  .puls-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--signal);
+    flex-shrink: 0;
+    animation: puls 2.4s ease-out 480ms infinite;
+  }
+
+  .puls-tekst {
+    color: var(--signal);
+  }
+
+  .puls-detalj {
+    color: var(--dempet);
+  }
+
+  @keyframes puls {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--signal) 45%, transparent);
+    }
+    70% {
+      box-shadow: 0 0 0 9px transparent;
+    }
+  }
+
+  /* --- Kodeboksen (kodeflaten er ankeret — identisk i begge temaer) --- */
+  .kodeboks {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--linje);
+    max-width: 720px;
+  }
+
+  .kodeflate,
+  .terminal {
+    font-family: var(--font-mono);
+    line-height: 1.75;
+    color: var(--kode-tekst);
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .kodeflate {
+    background: var(--kodeflate);
+    padding: 14px 18px;
+    font-size: 13.5px;
+  }
+
+  .terminal {
+    background: var(--terminal);
+    border-top: 1px solid #2a3241;
+    padding: 12px 18px 14px;
+    font-size: 13px;
+  }
+
+  @media (max-width: 680px) {
+    .kodeflate,
+    .terminal {
+      font-size: 12px;
+    }
+  }
+
+  .innrykk {
+    padding-left: 2ch;
+  }
+
+  .kw {
+    color: var(--syn-kw);
+  }
+
+  .fn {
+    color: var(--syn-fn);
+  }
+
+  .komm {
+    color: var(--syn-komm);
+  }
+
+  /* --- Klikkbare funksjonsnavn --- */
+  .fn-knapp {
+    all: unset;
+    font: inherit;
+    color: var(--syn-fn);
+    border-bottom: 1px dotted #3a4658;
+    cursor: pointer;
+  }
+
+  .fn-knapp:focus-visible {
+    outline: 2px solid var(--syn-fn);
+    outline-offset: 2px;
+  }
+
+  .fn-knapp[aria-expanded='true'] {
+    border-bottom-style: solid;
+  }
+
+  /* --- «nå:»-rader (ekspander: dur-panel) --- */
+  .naa-rad {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--dur-panel) var(--ease);
+  }
+
+  .naa-rad[data-open='true'] {
+    grid-template-rows: 1fr;
+  }
+
+  .naa-inner {
+    overflow: hidden;
+    min-height: 0;
+    padding-left: 4ch;
+  }
+
+  .naa-label {
+    color: var(--syn-komm);
+  }
+
+  .naa-verdi {
+    color: var(--syn-str);
+  }
+
+  .naa-kilde {
+    color: var(--syn-linjenr);
+    font-size: 11px;
+  }
+
+  /* --- Terminalfarger --- */
+  .t-groenn {
+    color: var(--term-groenn);
+  }
+
+  .t-magenta {
+    color: var(--term-magenta);
+  }
+
+  .t-teal {
+    color: var(--term-teal);
+  }
+
+  .t-cyan {
+    color: var(--term-cyan);
+  }
+
+  /* --- Pending — sidens primære CTA --- */
+  .pending {
+    font-family: inherit;
+    font-size: 12.5px;
+    color: var(--term-groenn);
+    background: none;
+    border: 1px dashed var(--term-groenn);
+    border-radius: var(--radius-sm);
+    padding: 1px 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background var(--dur-mikro),
+      color var(--dur-scene) var(--ease),
+      border-color var(--dur-scene) var(--ease);
+  }
+
+  .pending:hover {
+    background: color-mix(in srgb, var(--term-groenn) 12%, transparent);
+    color: var(--term-groenn);
+  }
+
+  .pending:focus-visible {
+    outline: 2px solid var(--term-groenn);
+    outline-offset: 2px;
+  }
+
+  .pending.resolved {
+    background: var(--term-groenn);
+    color: var(--terminal);
+    border-style: solid;
+  }
+
+  /* --- Reduced motion: alt står ferdig ved 0 ms --- */
+  @media (prefers-reduced-motion: reduce) {
+    .chip,
+    .bokstav,
+    .puls-dot,
+    .markoer {
+      animation: none;
+    }
+
+    .chip {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  // «nå:»-rader: toggle med mus/Enter/Space, aria-expanded + aria-hidden i synk
+  document.querySelectorAll<HTMLButtonElement>('[data-naa-toggle]').forEach((knapp) => {
+    knapp.addEventListener('click', () => {
+      const rad = document.getElementById(knapp.getAttribute('aria-controls') ?? '');
+      if (!rad) return;
+      const aapen = knapp.getAttribute('aria-expanded') === 'true';
+      knapp.setAttribute('aria-expanded', String(!aapen));
+      rad.dataset.open = String(!aapen);
+      rad.querySelector('[data-naa-innhold]')?.setAttribute('aria-hidden', String(aapen));
+    });
+  });
+
+  // Pending-CTA: resolve-sekvensen (signaturen, dur-scene) før navigasjon.
+  // Uten JS eller med reduced motion: vanlig lenke rett til kontakt.
+  const pending = document.getElementById('pending-cta') as HTMLAnchorElement | null;
+  if (pending) {
+    pending.addEventListener('click', (e) => {
+      if (pending.classList.contains('resolved')) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      e.preventDefault();
+      pending.classList.add('resolved');
+      pending.textContent = '<fulfilled>: "si hei →"';
+      window.setTimeout(() => {
+        window.location.href = pending.href;
+      }, 640);
+    });
+  }
+</script>

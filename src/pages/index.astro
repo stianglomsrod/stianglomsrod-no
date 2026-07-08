@@ -1,23 +1,27 @@
 ---
 import Base from '../layouts/Base.astro';
-
-/* Plassholder fra scaffolding-steget — erstattes av låst hero (Done 2–5). */
+import Hero from '../components/Hero.astro';
 ---
 
 <Base
   title="Stian Glomsrød — utvikler og UX"
   description="Personlig utviklerportefølje og sandbox. Et kjørende program, ikke en brosjyre."
 >
-  <main style="max-width: 68ch; margin: 0 auto; padding: var(--s-8) var(--s-5);">
-    <p
-      style="font-family: var(--font-mono); font-size: var(--tekst-label); letter-spacing: 0.12em; color: var(--dempet);"
-    >
-      STIANGLOMSROD.NO · V2.0.0-BETA
-    </p>
-    <h1 style="font-size: var(--tekst-tittel);">Under bygging</h1>
-    <p style="color: var(--dempet);">
-      Skjelett fra scaffolding-steget. Designsystemet (tokens) er implementert;
-      hero, navigasjon og innhold bygges i goal-loopen.
-    </p>
+  <main class="ramme">
+    <Hero />
   </main>
 </Base>
+
+<style>
+  .ramme {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 var(--s-6) var(--s-8);
+  }
+
+  @media (max-width: 680px) {
+    .ramme {
+      padding: 0 var(--s-4) var(--s-7);
+    }
+  }
+</style>
