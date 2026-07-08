@@ -1,0 +1,39 @@
+---
+import Side from '../layouts/Side.astro';
+
+/* Skjelett: case-kort i formatet problem → innsikt → valg → resultat →
+   læring. Klar er hovedcase (demo + video); deretter Companion,
+   Lori Frisør (betinget Done 19) og Figma-prototypene. */
+---
+
+<Side
+  title="Prosjekter — Stian Glomsrød"
+  description="Case: Klar, Companion, Lori Frisør og prototyper — problem, innsikt, valg, resultat, læring."
+>
+  <p class="kicker">PROSJEKTER</p>
+  <h1>Prosjekter</h1>
+  <p class="dempet">
+    Case-kort i formatet problem → innsikt → valg → resultat → læring bygges
+    her. Klar blir hovedcase.
+  </p>
+</Side>
+
+<style>
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: var(--tekst-label);
+    letter-spacing: 0.12em;
+    color: var(--dempet);
+    margin: var(--s-7) 0 var(--s-2);
+  }
+
+  h1 {
+    font-size: var(--tekst-tittel);
+    margin: 0 0 var(--s-3);
+  }
+
+  .dempet {
+    color: var(--dempet);
+    max-width: 68ch;
+  }
+</style>

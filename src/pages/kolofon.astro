@@ -1,0 +1,59 @@
+---
+import Side from '../layouts/Side.astro';
+
+/* Skjelett: hvordan siden ble bygget (agentisk arbeidsflyt, baseline-tall
+   fra docs/innsikt/), tilgjengelighetserklæring og personvern (Done 17).
+   Ankrene #tilgjengelighet og #personvern brukes fra footeren. */
+---
+
+<Side
+  title="Kolofon — Stian Glomsrød"
+  description="Slik ble siden bygget: verktøy, tilgjengelighet, personvern og kvitteringer."
+>
+  <p class="kicker">KOLOFON</p>
+  <h1>Kolofon</h1>
+  <p class="dempet">
+    Byggehistorie, fontlisenser og Lighthouse-kvitteringer kommer her når
+    siden nærmer seg release.
+  </p>
+  <section id="tilgjengelighet" aria-labelledby="uu-tittel">
+    <h2 id="uu-tittel">Tilgjengelighet</h2>
+    <p class="dempet">
+      Målet er WCAG 2.1 AA. Erklæringen skrives når siden er komplett — med
+      testlogg, ikke bare påstander.
+    </p>
+  </section>
+  <section id="personvern" aria-labelledby="pv-tittel">
+    <h2 id="pv-tittel">Personvern</h2>
+    <p class="dempet">
+      Ingen cookies, ingen sporing, ingenting lagres. Full personverntekst
+      (inkl. behandlingsgrunnlag for kontaktskjemaet og databehandlere)
+      kommer med skjemaet.
+    </p>
+  </section>
+</Side>
+
+<style>
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: var(--tekst-label);
+    letter-spacing: 0.12em;
+    color: var(--dempet);
+    margin: var(--s-7) 0 var(--s-2);
+  }
+
+  h1 {
+    font-size: var(--tekst-tittel);
+    margin: 0 0 var(--s-3);
+  }
+
+  h2 {
+    font-size: 18px;
+    margin: var(--s-6) 0 var(--s-2);
+  }
+
+  .dempet {
+    color: var(--dempet);
+    max-width: 68ch;
+  }
+</style>

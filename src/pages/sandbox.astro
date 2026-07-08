@@ -1,0 +1,38 @@
+---
+import Side from '../layouts/Side.astro';
+
+/* Skjelett: verkstedet. Hue-parameteren bor her (og på 404) — Done 12.
+   Spillet «Skamløs pitch» porteres hit (Done 21–22). */
+---
+
+<Side
+  title="/sandbox — Stian Glomsrød"
+  description="Verkstedet: eksperimenter, egne skills og spillet «Skamløs pitch»."
+>
+  <p class="kicker">/SANDBOX</p>
+  <h1>Sandbox</h1>
+  <p class="dempet">
+    Verkstedet. Hue-parameteren og spillet «Skamløs pitch» flytter inn her.
+    Uferdighet med hensikt.
+  </p>
+</Side>
+
+<style>
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: var(--tekst-label);
+    letter-spacing: 0.12em;
+    color: var(--dempet);
+    margin: var(--s-7) 0 var(--s-2);
+  }
+
+  h1 {
+    font-size: var(--tekst-tittel);
+    margin: 0 0 var(--s-3);
+  }
+
+  .dempet {
+    color: var(--dempet);
+    max-width: 68ch;
+  }
+</style>

@@ -1,0 +1,58 @@
+---
+const aar = new Date().getFullYear();
+---
+
+<footer class="bunn">
+  <div class="indre">
+    <p class="kolofonlinje">
+      © {aar} Stian Glomsrød · bygget i åpen dialog med Claude Code · ingen
+      cookies, ingen sporing
+    </p>
+    <p class="lenker">
+      <a href="/kolofon">kolofon</a>
+      <span aria-hidden="true">·</span>
+      <a href="/kolofon#tilgjengelighet">tilgjengelighet</a>
+      <span aria-hidden="true">·</span>
+      <a href="/kolofon#personvern">personvern</a>
+      <span aria-hidden="true">·</span>
+      <a href="mailto:stianglomsrod@gmail.com">e-post</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://github.com/stianglomsrod" rel="me">GitHub</a>
+      <span aria-hidden="true">·</span>
+      <a href="https://www.linkedin.com/in/stian-glomsr%C3%B8d-156968265/" rel="me">LinkedIn</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .bunn {
+    border-top: 1px dashed var(--linje);
+    margin-top: var(--s-8);
+  }
+
+  .indre {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: var(--s-4) var(--s-6) var(--s-5);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--s-3);
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+
+  .kolofonlinje {
+    margin: 0;
+    color: var(--dempet);
+  }
+
+  .lenker {
+    margin: 0;
+    color: var(--dempet);
+    display: flex;
+    gap: var(--s-2);
+    flex-wrap: wrap;
+  }
+</style>

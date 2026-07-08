@@ -1,0 +1,52 @@
+---
+import Side from '../layouts/Side.astro';
+
+/* Skjelett: den lekne roboten (arver sandbox-hue) bygges i sandbox-steget
+   (Done 12). */
+---
+
+<Side title="404 — Stian Glomsrød" description="Fant ikke ruta.">
+  <p class="kicker">HTTP 404</p>
+  <pre class="robot" aria-hidden="true">
+   [ o_o ]
+   /|___|\
+    d   b</pre>
+  <h1>Fant ikke ruta</h1>
+  <p class="dempet">
+    Roboten har lett overalt. <code>git checkout <a href="/">forsiden</a></code>
+    er tryggeste vei videre.
+  </p>
+</Side>
+
+<style>
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: var(--tekst-label);
+    letter-spacing: 0.12em;
+    color: var(--dempet);
+    margin: var(--s-7) 0 var(--s-2);
+  }
+
+  .robot {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--hue-aksent);
+    margin: 0 0 var(--s-3);
+  }
+
+  h1 {
+    font-size: var(--tekst-tittel);
+    margin: 0 0 var(--s-3);
+  }
+
+  .dempet {
+    color: var(--dempet);
+    max-width: 68ch;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+</style>

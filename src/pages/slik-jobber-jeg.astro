@@ -1,0 +1,37 @@
+---
+import Side from '../layouts/Side.astro';
+
+/* Skjelett: README-format — goals, guardrails, human_review. Migrerer
+   dagens 8-stegs arbeidsflyt (se docs/innsikt/INNHOLD-INVENTAR.md). */
+---
+
+<Side
+  title="Slik jobber jeg — Stian Glomsrød"
+  description="README for arbeidsmåten: goals, guardrails og menneske i loopen."
+>
+  <p class="kicker">README</p>
+  <h1>Slik jobber jeg</h1>
+  <p class="dempet">
+    goals · guardrails · human_review — README-en for arbeidsmåten bygges her.
+  </p>
+</Side>
+
+<style>
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: var(--tekst-label);
+    letter-spacing: 0.12em;
+    color: var(--dempet);
+    margin: var(--s-7) 0 var(--s-2);
+  }
+
+  h1 {
+    font-size: var(--tekst-tittel);
+    margin: 0 0 var(--s-3);
+  }
+
+  .dempet {
+    color: var(--dempet);
+    max-width: 68ch;
+  }
+</style>

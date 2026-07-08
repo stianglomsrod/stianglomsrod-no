@@ -1,0 +1,52 @@
+---
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <Nav />
+  <main id="innhold" class="ramme">
+    <slot />
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .hopp {
+    position: absolute;
+    left: -9999px;
+    top: var(--s-2);
+    z-index: 10;
+    background: var(--flate);
+    color: var(--tekst);
+    padding: var(--s-2) var(--s-4);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--linje);
+  }
+
+  .hopp:focus-visible {
+    left: var(--s-2);
+  }
+
+  .ramme {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 var(--s-6) var(--s-8);
+    min-height: 55vh;
+  }
+
+  @media (max-width: 680px) {
+    .ramme {
+      padding: 0 var(--s-4) var(--s-7);
+    }
+  }
+</style>

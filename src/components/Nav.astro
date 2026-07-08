@@ -1,0 +1,189 @@
+---
+/* Synlig nav-rad på alle flater — ingen hamburger (spec: 6 korte punkter
+   skal ikke gjemmes bak et klikk). Mobil: samme rad med overflow-x-scroll
+   og fade-kant. Aktiv side: grønn dot + --tekst + aria-current. */
+
+const punkter = [
+  { href: '/', label: 'forside' },
+  { href: '/prosjekter', label: 'prosjekter' },
+  { href: '/laeringsreisen', label: 'læringsreisen' },
+  { href: '/sandbox', label: '/sandbox' },
+  { href: '/slik-jobber-jeg', label: 'slik jobber jeg' },
+  { href: '/om', label: 'om/kontakt' },
+];
+
+const sti = Astro.url.pathname.replace(/\/$/, '') || '/';
+const erAktiv = (href: string) => sti === (href === '/' ? '/' : href);
+---
+
+<header class="topp">
+  <a class="merke" href="/" aria-label="stian glomsrød — til forsiden">
+    stian<span class="merke-markoer" aria-hidden="true"></span>
+  </a>
+  <nav aria-label="Hovedmeny">
+    <ul class="meny">
+      {punkter.map((p) => (
+        <li>
+          <a
+            href={p.href}
+            class:list={['punkt', { aktiv: erAktiv(p.href) }]}
+            aria-current={erAktiv(p.href) ? 'page' : undefined}
+          >
+            {erAktiv(p.href) && <span class="dot" aria-hidden="true"></span>}
+            {p.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+  <button type="button" id="tema-toggle" class="tema">
+    <span id="tema-tekst">tema</span>
+  </button>
+</header>
+
+<style>
+  .topp {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-4);
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: var(--s-3) var(--s-6);
+    border-bottom: 1px solid var(--linje);
+  }
+
+  .merke {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--tekst);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    padding: var(--s-2) 0;
+    flex-shrink: 0;
+  }
+
+  .merke-markoer {
+    display: inline-block;
+    width: 0.45em;
+    height: 0.9em;
+    margin-left: 2px;
+    background: var(--signal);
+  }
+
+  .meny {
+    display: flex;
+    gap: var(--s-1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+  }
+
+  .punkt {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--dempet);
+    text-decoration: none;
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    transition: color var(--dur-mikro), background var(--dur-mikro);
+  }
+
+  .punkt:hover {
+    color: var(--tekst);
+    background: var(--flate);
+  }
+
+  .punkt.aktiv {
+    color: var(--tekst);
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--signal);
+    flex-shrink: 0;
+  }
+
+  .tema {
+    all: unset;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--dempet);
+    border: 1px solid var(--linje);
+    border-radius: var(--radius-sm);
+    padding: 12px 12px;
+    min-width: 44px;
+    min-height: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color var(--dur-mikro), border-color var(--dur-mikro);
+  }
+
+  .tema:hover {
+    color: var(--tekst);
+    border-color: var(--dempet);
+  }
+
+  .tema:focus-visible {
+    outline: 2px solid var(--aksent-1);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 680px) {
+    .topp {
+      padding: var(--s-2) var(--s-4);
+    }
+
+    .meny {
+      mask-image: linear-gradient(
+        90deg,
+        transparent 0,
+        #000 12px,
+        #000 calc(100% - 12px),
+        transparent
+      );
+      padding-inline: 12px;
+    }
+  }
+</style>
+
+<script>
+  // Tema-toggle: manuelt valg persisteres i localStorage 'data-theme'
+  // (cookiefritt). Uten valg følges prefers-color-scheme via CSS.
+  const knapp = document.getElementById('tema-toggle');
+  const tekst = document.getElementById('tema-tekst');
+
+  const effektivt = (): 'dark' | 'light' => {
+    const satt = document.documentElement.dataset.theme;
+    if (satt === 'dark' || satt === 'light') return satt;
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  };
+
+  const oppdater = () => {
+    if (!knapp || !tekst) return;
+    const neste = effektivt() === 'dark' ? 'lyst' : 'mørkt';
+    tekst.textContent = neste === 'lyst' ? '☀ lys' : '☾ mørk';
+    knapp.setAttribute('aria-label', `Bytt til ${neste} tema`);
+  };
+
+  knapp?.addEventListener('click', () => {
+    const ny = effektivt() === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = ny;
+    try {
+      localStorage.setItem('data-theme', ny);
+    } catch {}
+    oppdater();
+  });
+
+  oppdater();
+</script>

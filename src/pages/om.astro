@@ -1,42 +1,45 @@
 ---
-import Base from '../layouts/Base.astro';
+import Side from '../layouts/Side.astro';
 
-/* Stubbe: mål for hero-CTA-en. Bygges ut med portrett, STIAN(1)-manside
-   og kontaktskjema (Done 8) i side-skjelett-/skjema-stegene. */
+/* Skjelett: bygges ut med portrett, STIAN(1)-manside og kontaktskjema
+   (Done 8) i skjema-steget. */
 ---
 
-<Base
+<Side
   title="Om og kontakt — Stian Glomsrød"
   description="Hvem Stian er, og hvordan du tar kontakt."
 >
-  <main class="ramme">
-    <p class="kicker">OM / KONTAKT</p>
-    <h1>Promise resolved — nesten</h1>
-    <section id="kontakt" aria-labelledby="kontakt-tittel">
-      <h2 id="kontakt-tittel">Ta kontakt</h2>
-      <p>
-        Kontaktskjemaet bygges nå. I mellomtiden:
-        <a href="mailto:stianglomsrod@gmail.com">stianglomsrod@gmail.com</a>
-      </p>
-    </section>
-  </main>
-</Base>
+  <p class="kicker">OM / KONTAKT</p>
+  <h1>Om og kontakt</h1>
+  <p class="dempet">
+    Lærer med master i digital læringsdesign (OsloMet, 2026), på vei inn i
+    utviklerrollen. Portrett, STIAN(1)-mansiden og mer kommer her.
+  </p>
+  <section id="kontakt" aria-labelledby="kontakt-tittel">
+    <h2 id="kontakt-tittel">Ta kontakt</h2>
+    <p>
+      Kontaktskjemaet bygges nå. I mellomtiden:
+      <a href="mailto:stianglomsrod@gmail.com">stianglomsrod@gmail.com</a>
+    </p>
+  </section>
+</Side>
 
 <style>
-  .ramme {
-    max-width: 68ch;
-    margin: 0 auto;
-    padding: var(--s-8) var(--s-6) var(--s-8);
-  }
-
   .kicker {
     font-family: var(--font-mono);
     font-size: var(--tekst-label);
     letter-spacing: 0.12em;
     color: var(--dempet);
+    margin: var(--s-7) 0 var(--s-2);
   }
 
   h1 {
     font-size: var(--tekst-tittel);
+    margin: 0 0 var(--s-3);
+  }
+
+  .dempet {
+    color: var(--dempet);
+    max-width: 68ch;
   }
 </style>
