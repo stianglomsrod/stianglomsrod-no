@@ -15,8 +15,8 @@ med commit-hash og reverseringskommando, og push til GitHub.
   bygging. Spørsmålet om gjenbruk av portfolio-site-repoet vs. nytt repo avgjøres
   først etter Fase 0 (jf. startprompt punkt 2); inntil da er dette et lokalt repo
   uten remote.
-- **Commit:** (fylles inn etter første commit)
-- **Reversering:** `git revert <hash>`
+- **Commit:** a48219b
+- **Reversering:** `git revert a48219b`
 
 ## 2026-07-08 · Guardrails-port kjørt på nytt ved onboarding
 
@@ -25,5 +25,5 @@ med commit-hash og reverseringskommando, og push til GitHub.
 - **Begrunnelse:** Fast arbeidsmåte for porteføljeprosjekter (port før kode).
   Ett presiseringspunkt utover PRD-en: Resend/Vercel må dokumenteres som
   databehandlere med EU-region/DPA-vurdering i personvernteksten (Done 17).
-- **Commit:** (samme som over)
-- **Reversering:** `git revert <hash>`
+- **Commit:** a48219b
+- **Reversering:** `git revert a48219b`
