@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,300..700;1,300..700&amp;family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&amp;family=Anybody:wdth,wght@50..150,100..900&amp;display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; background: #0f131a; }
+    a { color: #7db4e8; text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: #a5cbf0; }
+    @keyframes blink { 50% { opacity: 0; } }
+    @keyframes ticker { to { transform: translateX(-50%); } }
+    @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(69,217,69,0.45); } 70% { box-shadow: 0 0 0 9px rgba(69,217,69,0); } }
+    @media (prefers-reduced-motion: reduce) { [data-cursor], [data-anim] { animation: none !important; } }
+    ::selection { background: rgba(125,180,232,0.28); }
+  </style>
+</helmet>
+
+<!-- TICKER -->
+<div data-screen-label="Ticker" style="border-top: 1px solid #262e3b; border-bottom: 1px solid #262e3b; overflow: hidden; background: #12161e;">
+  <div data-anim="1" style="display: flex; width: max-content; animation: ticker 30s linear infinite; padding: 9px 0; font-family: 'Cascadia Code', monospace; font-size: 11.5px; letter-spacing: 0.04em; color: #98a1ad; white-space: nowrap;">
+    <span style="padding: 0 18px;">now.json → java-grunnkurs: <span style="color: #d19a66;">uke 7/12</span></span><span style="color: #45d945;">▪</span>
+    <span style="padding: 0 18px;">siste commit: <span style="color: #d6dce6;">for 2 timer siden</span></span><span style="color: #45d945;">▪</span>
+    <span style="padding: 0 18px;">status: <span style="color: #45d945;">søker utvikler / ux</span></span><span style="color: #45d945;">▪</span>
+    <span style="padding: 0 18px;">sandbox: <span style="color: #7db4e8;">hue-parameter live</span></span><span style="color: #45d945;">▪</span>
+    <span style="padding: 0 18px;">cookies servert: <span style="color: #d6dce6;">0</span></span><span style="color: #45d945;">▪</span>
+    <span style="padding: 0 18px;">now.json → java-grunnkurs: <span style="color: #d19a66;">uke 7/12</span></span><span style="color: #45d945;">▪</span>
+    <span style="padding: 0 18px;">siste commit: <span style="color: #d6dce6;">for 2 timer siden</span></span><span style="color: #45d945;">▪</span>
+    <span style="padding: 0 18px;">status: <span style="color: #45d945;">søker utvikler / ux</span></span><span style="color: #45d945;">▪</span>
+    <span style="padding: 0 18px;">sandbox: <span style="color: #7db4e8;">hue-parameter live</span></span><span style="color: #45d945;">▪</span>
+    <span style="padding: 0 18px;">cookies servert: <span style="color: #d6dce6;">0</span></span><span style="color: #45d945;">▪</span>
+  </div>
+</div>
+
+<div style="max-width: 1060px; margin: 0 auto; padding: 0 32px 96px; display: flex; flex-direction: column; gap: 52px;">
+
+  <!-- HERO -->
+  <section data-screen-label="Hero" style="padding-top: 64px; display: flex; flex-direction: column; gap: 26px;">
+    <div style="font-family: 'Cascadia Code', monospace; font-size: 11px; letter-spacing: 0.12em; color: #98a1ad;">STIANGLOMSROD.NO V2 · STYLING GUIDE <span style="color: #45d945;">V2.0</span> · MØRK-FØRST · 08.07.2026 · V1 = TRYGG BASE, V2 = FULL THROTTLE</div>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+      <span style="display: inline-flex; font-family: 'Cascadia Code', monospace; font-size: 10.5px; border-radius: 4px; overflow: hidden;"><span style="background: #262e3b; color: #a6afbb; padding: 4px 8px;">status</span><span style="background: #45d945; color: #0f131a; font-weight: 600; padding: 4px 8px;">søker aktivt</span></span>
+      <span style="display: inline-flex; font-family: 'Cascadia Code', monospace; font-size: 10.5px; border-radius: 4px; overflow: hidden; border: 1px solid #3a4553;"><span style="background: #262e3b; color: #a6afbb; padding: 4px 8px;">roller</span><span style="background: none; color: #c3cad6; padding: 4px 8px;">dev · ux</span></span>
+      <span style="display: inline-flex; font-family: 'Cascadia Code', monospace; font-size: 10.5px; border-radius: 4px; overflow: hidden; border: 1px solid #3a4553;"><span style="background: #262e3b; color: #a6afbb; padding: 4px 8px;">java</span><span style="background: none; color: #c3cad6; padding: 4px 8px;">uke 7/12</span></span>
+      <span style="display: inline-flex; font-family: 'Cascadia Code', monospace; font-size: 10.5px; border-radius: 4px; overflow: hidden; border: 1px solid #3a4553;"><span style="background: #262e3b; color: #a6afbb; padding: 4px 8px;">agentisk ki</span><span style="background: none; color: #c3cad6; padding: 4px 8px;">daglig drift</span></span>
+      <span style="display: inline-flex; font-family: 'Cascadia Code', monospace; font-size: 10.5px; border-radius: 4px; overflow: hidden;"><span style="background: #262e3b; color: #a6afbb; padding: 4px 8px;">build</span><span style="background: #45d945; color: #0f131a; font-weight: 600; padding: 4px 8px;">passing</span></span>
+    </div>
+    <div style="font-family: 'Anybody', sans-serif; font-size: clamp(52px, 8.5vw, 96px); font-weight: 900; line-height: 1.05; color: #d6dce6; display: flex; align-items: baseline; flex-wrap: wrap; letter-spacing: -0.01em; text-transform: lowercase;">
+      <span style="font-variation-settings: 'wdth' 104; transition: font-variation-settings 0.3s, color 0.3s;" style-hover="font-variation-settings: 'wdth' 135; color: #45d945;">s</span>
+      <span style="font-variation-settings: 'wdth' 98; transition: font-variation-settings 0.3s, color 0.3s;" style-hover="font-variation-settings: 'wdth' 135; color: #7db4e8;">t</span>
+      <span style="font-variation-settings: 'wdth' 108; transition: font-variation-settings 0.3s, color 0.3s;" style-hover="font-variation-settings: 'wdth' 135; color: #d466d4;">i</span>
+      <span style="font-variation-settings: 'wdth' 96; transition: font-variation-settings 0.3s, color 0.3s;" style-hover="font-variation-settings: 'wdth' 135; color: #d19a66;">a</span>
+      <span style="font-variation-settings: 'wdth' 106; transition: font-variation-settings 0.3s, color 0.3s;" style-hover="font-variation-settings: 'wdth' 135; color: #e8949c;">n</span>
+      <span style="width: 0.32em;"></span>
+      <span style="font-variation-settings: 'wdth' 100; transition: font-variation-settings 0.3s, color 0.3s;" style-hover="font-variation-settings: 'wdth' 135; color: #7db4e8;">g</span>
+      <span style="font-variation-settings: 'wdth' 108; transition: font-variation-settings 0.3s, color 0.3s;" style-hover="font-variation-settings: 'wdth' 135; color: #45d945;">l</span>
+      <span style="font-variation-settings: 'wdth' 96; transition: font-variation-settings 0.3s, color 0.3s;" style-hover="font-variation-settings: 'wdth' 135; color: #d466d4;">o</span>
+      <span style="font-variation-settings: 'wdth' 105; transition: font-variation-settings 0.3s, color 0.3s;" style-hover="font-variation-settings: 'wdth' 135; color: #e8949c;">m</span>
+      <span style="font-variation-settings: 'wdth' 99; transition: font-variation-settings 0.3s, color 0.3s;" style-hover="font-variation-settings: 'wdth' 135; color: #d19a66;">s</span>
+      <span style="font-variation-settings: 'wdth' 107; transition: font-variation-settings 0.3s, color 0.3s;" style-hover="font-variation-settings: 'wdth' 135; color: #45d945;">r</span>
+      <span style="font-variation-settings: 'wdth' 97; transition: font-variation-settings 0.3s, color 0.3s;" style-hover="font-variation-settings: 'wdth' 135; color: #7db4e8;">ø</span>
+      <span style="font-variation-settings: 'wdth' 105; transition: font-variation-settings 0.3s, color 0.3s;" style-hover="font-variation-settings: 'wdth' 135; color: #d466d4;">d</span>
+      <span style="color: #45d945;">.</span>
+    </div>
+    <p style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 19px; line-height: 1.55; color: #98a1ad; margin: 0; max-width: 56ch;">Lærer på vei inn i utviklerrollen. Bygger ekte ting med agentisk KI — og <span style="color: #d6dce6;">søker jobb mens du leser dette</span>. Siden er både CV-en og verkstedet.</p>
+    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+      <span data-anim="1" style="width: 11px; height: 11px; border-radius: 50%; background: #45d945; animation: pulse 2.4s ease-out infinite; flex-shrink: 0;"></span>
+      <span style="font-family: 'Cascadia Code', monospace; font-size: 12.5px; color: #45d945;">tilgjengelig for intervju</span>
+      <span style="font-family: 'Cascadia Code', monospace; font-size: 12.5px; color: #98a1ad;">· Halden / remote · svarer &lt; 24t</span>
+    </div>
+    <div style="border-radius: 12px; overflow: hidden; border: 1px solid #262e3b; max-width: 720px;">
+      <div style="background: #1b212b; padding: 14px 18px; font-family: 'Cascadia Code', monospace; font-size: 13.5px; line-height: 1.75; color: #c9d1dd;">
+        <div><span style="color: #e06c75;">const</span> jobb <span style="color: #e06c75;">=</span> <span style="color: #e06c75;">await</span> <span style="color: #61afef;">Promise.all</span>([</div>
+        <div style="padding-left: 2ch;"><span style="color: #61afef; border-bottom: 1px dotted #3a4658; cursor: pointer;">lærProgrammering</span>(), <span style="color: #8b93a0;">// TODO: Java-grunnkurs, Coursera</span></div>
+        <div style="padding-left: 2ch;"><span style="color: #61afef; border-bottom: 1px dotted #3a4658; cursor: pointer;">lærKI</span>(), <span style="color: #8b93a0;">// TODO: fikser gamle prosjekter med Claude Code</span></div>
+        <div>]);</div>
+      </div>
+      <div style="background: #12161e; border-top: 1px solid #262e3b; padding: 12px 18px 14px; font-family: 'Cascadia Code', monospace; font-size: 13px; line-height: 1.75; color: #c9d1dd;">
+        <div><span style="color: #45d945;">dev@null</span> <span style="color: #d466d4;">MINGW64</span> <span style="color: #4ec9b0;">~/src</span> <span style="color: #56b6c2;">(HEAD detached)</span></div>
+        <div><span>$</span> jobb</div>
+        <div>Promise { <button onClick="{{ togHero }}" aria-label="Resolve promisen — ta kontakt" style="background: none; border: 1px dashed #45d945; color: #45d945; font-family: inherit; font-size: 12.5px; padding: 1px 8px; border-radius: 6px; cursor: pointer;" style-hover="background: rgba(69,217,69,0.12);" style-focus="outline: 2px solid #45d945; outline-offset: 2px;">{{ pendHero }}</button> }</div>
+        <div><span>$</span>{{ curHero }}</div>
+      </div>
+    </div>
+    <div style="font-family: 'Cascadia Code', monospace; font-size: 11px; line-height: 1.7; color: #98a1ad; max-width: 76ch;">v2-grep: pending-knappen bytter til signalgrønn — CTA-en og «søker jobb»-signalet er samme farge, samme klikk. Navnetrekket reagerer på peker (på ekte side: scroll-drevet via CSS, uten JS). Badges: kun status og build får fylt grønn — resten er stille outlines, så jobbsignalet vinner alltid. Ticker øverst er now.json + GitHub API i sanntid. Alt stopper ved prefers-reduced-motion.</div>
+  </section>
+
+  <!-- KONSEPT -->
+  <section data-screen-label="Konsept" style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="font-family: 'Cascadia Code', monospace; font-size: 11px; letter-spacing: 0.12em; color: #98a1ad;">01 · HVA V2 GJØR SOM V1 IKKE TØR</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 16px 18px;"><div style="font-family: 'Cascadia Code', monospace; font-size: 11px; color: #45d945; margin-bottom: 6px;">mørk-først</div><div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 14px; line-height: 1.55; color: #d6dce6;">Hele siden bor i kodeflatens verden som standard. Papirtemaet fra v1 blir dagmodus (prefers-color-scheme: light). IDE-en er ikke lenger en komponent — den er stedet.</div></div>
+      <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 16px 18px;"><div style="font-family: 'Cascadia Code', monospace; font-size: 11px; color: #45d945; margin-bottom: 6px;">signalfargen er jobbsignalet</div><div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 14px; line-height: 1.55; color: #d6dce6;">Terminal-grønn (#45d945) brukes KUN om tilgjengelighet og handling: status-dot, badges, pending-CTA. Grønn på denne siden betyr alltid «aktiv og åpen».</div></div>
+      <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 16px 18px;"><div style="font-family: 'Cascadia Code', monospace; font-size: 11px; color: #45d945; margin-bottom: 6px;">typografi som energikilde</div><div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 14px; line-height: 1.55; color: #d6dce6;">Ingen glød, ingen gradienter, ingen 3D — det iøyefallende kommer fra det kinetiske navnetrekket (Anybody, variabel bredde) og levende data. Resten står stille.</div></div>
+      <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 16px 18px;"><div style="font-family: 'Cascadia Code', monospace; font-size: 11px; color: #45d945; margin-bottom: 6px;">playground med kvittering</div><div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 14px; line-height: 1.55; color: #d6dce6;">Ny teknologi brukes i produksjon og dokumenteres i kolofonen (§05). Eksperimentene ER innholdet — ikke pynt på det.</div></div>
+    </div>
+  </section>
+
+  <!-- TOKENS -->
+  <section data-screen-label="02 Tokens v2" style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="font-family: 'Cascadia Code', monospace; font-size: 11px; letter-spacing: 0.12em; color: #98a1ad;">02 · TOKENS V2 — MØRK STANDARD (KONTRAST BEREGNET)</div>
+    <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 16px 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px;">
+      <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #232a36; font-family: 'Cascadia Code', monospace; font-size: 11px; color: #d6dce6;"><span style="width: 20px; height: 20px; background: #0f131a; border: 1px solid #303845; border-radius: 6px; flex-shrink: 0;"></span><span style="width: 104px;">--bg</span><span style="width: 72px; color: #98a1ad;">#0f131a</span><span style="color: #98a1ad;">dypere enn v1</span></div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #232a36; font-family: 'Cascadia Code', monospace; font-size: 11px; color: #d6dce6;"><span style="width: 20px; height: 20px; background: #161c26; border: 1px solid #303845; border-radius: 6px; flex-shrink: 0;"></span><span style="width: 104px;">--flate</span><span style="width: 72px; color: #98a1ad;">#161c26</span><span style="color: #98a1ad;">kort, felter</span></div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #232a36; font-family: 'Cascadia Code', monospace; font-size: 11px; color: #d6dce6;"><span style="width: 20px; height: 20px; background: #d6dce6; border-radius: 6px; flex-shrink: 0;"></span><span style="width: 104px;">--tekst</span><span style="width: 72px; color: #98a1ad;">#d6dce6</span><span style="color: #45d945;">13.5:1 AAA</span></div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #232a36; font-family: 'Cascadia Code', monospace; font-size: 11px; color: #d6dce6;"><span style="width: 20px; height: 20px; background: #98a1ad; border-radius: 6px; flex-shrink: 0;"></span><span style="width: 104px;">--dempet</span><span style="width: 72px; color: #98a1ad;">#98a1ad</span><span style="color: #45d945;">7.1:1 AAA</span></div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #232a36; font-family: 'Cascadia Code', monospace; font-size: 11px; color: #d6dce6;"><span style="width: 20px; height: 20px; background: #45d945; border-radius: 6px; flex-shrink: 0;"></span><span style="width: 104px;">--signal</span><span style="width: 72px; color: #98a1ad;">#45d945</span><span style="color: #45d945;">10.0:1 AAA</span></div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #232a36; font-family: 'Cascadia Code', monospace; font-size: 11px; color: #d6dce6;"><span style="width: 20px; height: 20px; background: #7db4e8; border-radius: 6px; flex-shrink: 0;"></span><span style="width: 104px;">--aksent-1</span><span style="width: 72px; color: #98a1ad;">#7db4e8</span><span style="color: #45d945;">8.5:1 AAA</span></div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #232a36; font-family: 'Cascadia Code', monospace; font-size: 11px; color: #d6dce6;"><span style="width: 20px; height: 20px; background: #e8949c; border-radius: 6px; flex-shrink: 0;"></span><span style="width: 104px;">--aksent-2</span><span style="width: 72px; color: #98a1ad;">#e8949c</span><span style="color: #45d945;">8.1:1 AAA</span></div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid #232a36; font-family: 'Cascadia Code', monospace; font-size: 11px; color: #d6dce6;"><span style="width: 20px; height: 20px; background: #d19a66; border-radius: 6px; flex-shrink: 0;"></span><span style="width: 104px;">--konst</span><span style="width: 72px; color: #98a1ad;">#d19a66</span><span style="color: #45d945;">7.6:1 AAA</span></div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-family: 'Cascadia Code', monospace; font-size: 11px; color: #d6dce6;"><span style="width: 20px; height: 20px; background: #1b212b; border: 1px solid #303845; border-radius: 6px; flex-shrink: 0;"></span><span style="width: 104px;">--kodeflate</span><span style="width: 72px; color: #98a1ad;">#1b212b</span><span style="color: #98a1ad;">uendret anker</span></div>
+      <div style="display: flex; align-items: center; gap: 10px; padding: 6px 0; font-family: 'Cascadia Code', monospace; font-size: 11px; color: #d6dce6;"><span style="width: 20px; height: 20px; background: #262e3b; border-radius: 6px; flex-shrink: 0;"></span><span style="width: 104px;">--linje/badge</span><span style="width: 72px; color: #98a1ad;">#262e3b</span><span style="color: #98a1ad;">dekorativ</span></div>
+    </div>
+    <div style="font-family: 'Cascadia Code', monospace; font-size: 11px; line-height: 1.7; color: #98a1ad;">Dagmodus = v1s lyse papirtema, uendret (§02 i v1). --signal finnes ikke i v1 — i dagmodus mørknes den til #2c7a2c (AA på papir). Badge-tekst #a6afbb på #262e3b: 6.2:1 AA. Knappetekst #0f131a på --signal: 10.0:1 AAA.</div>
+  </section>
+
+  <!-- TYPOGRAFI -->
+  <section data-screen-label="03 Typografi v2" style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="font-family: 'Cascadia Code', monospace; font-size: 11px; letter-spacing: 0.12em; color: #98a1ad;">03 · TYPOGRAFI V2 — TRE STEMMER</div>
+    <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 20px 22px; display: flex; flex-direction: column; gap: 14px;">
+      <div style="font-family: 'Anybody', sans-serif; font-variation-settings: 'wdth' 110; font-size: 40px; font-weight: 900; color: #d6dce6; line-height: 1; text-transform: lowercase;">display · Anybody 900 <span style="font-variation-settings: 'wdth' 60; color: #45d945;">variabel</span></div>
+      <div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 16px; line-height: 1.6; color: #d6dce6; max-width: 62ch;">Brødtekst 16–19/1.6 · Atkinson Hyperlegible — uendret fra v1, tilgjengeligheten er ikke forhandlingsbar.</div>
+      <div style="font-family: 'Cascadia Code', monospace; font-size: 14px; color: #d6dce6;">Kode og data 13–14 · Cascadia Code — bærer alt levende innhold</div>
+      <div style="font-family: 'Cascadia Code', monospace; font-size: 11px; line-height: 1.8; color: #98a1ad; border-top: 1px dashed #262e3b; padding-top: 12px;">regel: Anybody brukes KUN om navnetrekket + tall i badges — aldri i løpende tekst · skala: clamp(52px, 8.5vw, 96px) for navnet, line-height 1.05 (æøå-ringene skal aldri klippes) · alle tre SIL OFL, self-host · reservefonter: system-ui-stack med matchende metrics (size-adjust)</div>
+    </div>
+  </section>
+
+  <!-- KOMPONENTER -->
+  <section data-screen-label="04 Komponenter v2" style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="font-family: 'Cascadia Code', monospace; font-size: 11px; letter-spacing: 0.12em; color: #98a1ad;">04 · KOMPONENTER V2</div>
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px;">
+      <div style="background: #12161e; border: 1px solid #262e3b; border-radius: 12px; padding: 18px 20px; font-family: 'Cascadia Code', monospace; font-size: 12px; line-height: 1.85; color: #c9d1dd;">
+        <div style="display: flex; justify-content: space-between; color: #98a1ad; font-size: 11px;"><span>STIAN(1)</span><span>Brukerhåndbok</span><span>STIAN(1)</span></div>
+        <div style="margin-top: 14px; color: #45d945; font-size: 11px; letter-spacing: 0.08em;">NAVN</div>
+        <div style="padding-left: 4ch;">stian — lærer i overgang til utvikler. halden edition.</div>
+        <div style="margin-top: 10px; color: #45d945; font-size: 11px; letter-spacing: 0.08em;">SYNOPSIS</div>
+        <div style="padding-left: 4ch;">stian [--utvikler] [--ux] [--ai-first] <span style="color: #d19a66;">--tilgjengelig=nå</span></div>
+        <div style="margin-top: 10px; color: #45d945; font-size: 11px; letter-spacing: 0.08em;">BESKRIVELSE</div>
+        <div style="padding-left: 4ch;">Master i digital læringsdesign (OsloMet, 2026). Bygger ekte ting med agentisk KI og dokumenterer alt. Små påstander, tunge kvitteringer.</div>
+        <div style="margin-top: 10px; color: #45d945; font-size: 11px; letter-spacing: 0.08em;">EXIT STATUS</div>
+        <div style="padding-left: 4ch;">Returnerer 0 ved ansettelse.</div>
+        <div style="margin-top: 10px; color: #45d945; font-size: 11px; letter-spacing: 0.08em;">SE OGSÅ</div>
+        <div style="padding-left: 4ch;"><a href="#" style="color: #7db4e8;">klar(1)</a>, <a href="#" style="color: #7db4e8;">companion(1)</a>, <a href="#" style="color: #7db4e8;">sandbox(7)</a></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; overflow: hidden; display: flex;">
+          <img src="stian.png" alt="Stian Glomsrød" style="width: 132px; height: 158px; object-fit: cover; object-position: 50% 10%; flex-shrink: 0; border-right: 1px solid #262e3b;">
+          <div style="padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; justify-content: center;">
+            <div style="font-family: 'Cascadia Code', monospace; font-size: 10px; letter-spacing: 0.1em; color: #98a1ad;">PORTRETT-KOMPONENT</div>
+            <div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 15px; font-weight: 700; color: #d6dce6;">Ekte foto, ingen filter</div>
+            <div style="font-family: 'Cascadia Code', monospace; font-size: 10.5px; line-height: 1.6; color: #98a1ad;">radius-md · 1px --linje · brukes i hero (dagens side gjør dette riktig) og på om-siden</div>
+          </div>
+        </div>
+        <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 18px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span data-anim="1" style="width: 10px; height: 10px; border-radius: 50%; background: #45d945; animation: pulse 2.4s ease-out infinite; flex-shrink: 0;"></span>
+            <span style="font-family: 'Cascadia Code', monospace; font-size: 11px; letter-spacing: 0.1em; color: #45d945;">TILGJENGELIG NÅ</span>
+          </div>
+          <div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 18px; font-weight: 700; color: #d6dce6; margin-top: 10px;">Utvikler · UX · AI-first</div>
+          <div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 13.5px; line-height: 1.5; color: #98a1ad; margin-top: 4px;">Halden / remote. Kan starte på kort varsel.</div>
+          <button onClick="{{ togHero }}" style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 14px; font-weight: 700; background: #45d945; color: #0f131a; border: none; border-radius: 9px; padding: 11px 20px; cursor: pointer; margin-top: 14px; box-shadow: 0 2px 0 #2c8a2c; transition: transform 0.08s, box-shadow 0.08s;" style-hover="background: #5ee65e;" style-active="transform: translateY(2px); box-shadow: 0 0 0 #2c8a2c;" style-focus="outline: 2px solid #d6dce6; outline-offset: 2px;">Resolve promisen →</button>
+        </div>
+        <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 16px 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;"><span style="font-family: 'Cascadia Code', monospace; font-size: 10px; letter-spacing: 0.1em; color: #7db4e8;">CASE · 01</span><span style="font-family: 'Cascadia Code', monospace; font-size: 10px; color: #98a1ad;">2026</span></div>
+          <div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 19px; font-weight: 700; color: #d6dce6; margin-top: 6px;">Klar</div>
+          <div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 13px; line-height: 1.5; color: #98a1ad; margin-top: 4px;">PWA for elever med eksekutive vansker.</div>
+          <div style="display: flex; gap: 14px; margin-top: 12px; font-family: 'Cascadia Code', monospace; font-size: 11px;"><a href="#" style="color: #45d945;">demo →</a><a href="#" style="color: #7db4e8;">commits →</a><a href="#" style="color: #7db4e8;">case →</a></div>
+        </div>
+      </div>
+    </div>
+    <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 16px 18px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+        <span style="font-family: 'Cascadia Code', monospace; font-size: 10px; letter-spacing: 0.1em; color: #98a1ad;">AKTIVITET · 353 CONTRIBUTIONS SISTE ÅR · GITHUB API · BEVIS PÅ «AKTIV NÅ»</span>
+        <span style="display: flex; align-items: center; gap: 4px; font-family: 'Cascadia Code', monospace; font-size: 9.5px; color: #98a1ad;">mindre <span style="width: 10px; height: 10px; border-radius: 2.5px; background: #1c2430;"></span><span style="width: 10px; height: 10px; border-radius: 2.5px; background: #234a2c;"></span><span style="width: 10px; height: 10px; border-radius: 2.5px; background: #2f6b3a;"></span><span style="width: 10px; height: 10px; border-radius: 2.5px; background: #3fa04a;"></span><span style="width: 10px; height: 10px; border-radius: 2.5px; background: #45d945;"></span> mer</span>
+      </div>
+      <div style="display: flex; gap: 3px;">
+        <sc-for list="{{ heat }}" as="w" hint-placeholder-count="10">
+          <div style="display: flex; flex-direction: column; gap: 3px;">
+            <sc-for list="{{ w.days }}" as="d" hint-placeholder-count="7">
+              <span style="width: 11px; height: 11px; border-radius: 2.5px; background: {{ d.c }}; display: block;"></span>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+      <div style="font-family: 'Cascadia Code', monospace; font-size: 10.5px; color: #98a1ad; margin-top: 12px;">toppnivå = --signal: aktivitetsmatrisen og «søker aktivt»-badgen snakker samme fargespråk · GraphQL contributionsCollection, cachet 6t</div>
+    </div>
+  </section>
+
+  <!-- PLAYGROUND / NY TEKNOLOGI -->
+  <section data-screen-label="05 Ny teknologi" style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="font-family: 'Cascadia Code', monospace; font-size: 11px; letter-spacing: 0.12em; color: #98a1ad;">05 · PLAYGROUND — NY TEKNOLOGI I PRODUKSJON (DOKUMENTERES I KOLOFONEN)</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+      <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 14px 16px;"><div style="display: flex; gap: 8px; align-items: baseline;"><span style="font-family: 'Cascadia Code', monospace; font-size: 9.5px; color: #0f131a; background: #7db4e8; border-radius: 3px; padding: 1px 6px; font-weight: 600;">API</span><span style="font-family: 'Cascadia Code', monospace; font-size: 12px; color: #d6dce6;">View Transitions</span></div><div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 12.5px; line-height: 1.5; color: #98a1ad; margin-top: 8px;">Sidenavigasjon med myke overganger — uten SPA-vekt. Fallback: vanlig navigasjon.</div></div>
+      <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 14px 16px;"><div style="display: flex; gap: 8px; align-items: baseline;"><span style="font-family: 'Cascadia Code', monospace; font-size: 9.5px; color: #0f131a; background: #45d945; border-radius: 3px; padding: 1px 6px; font-weight: 600;">CSS</span><span style="font-family: 'Cascadia Code', monospace; font-size: 12px; color: #d6dce6;">Scroll-driven animations</span></div><div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 12.5px; line-height: 1.5; color: #98a1ad; margin-top: 8px;">Displayordets bredde-akse + stillas-reveal drives av scroll — null JS. Fallback: statisk.</div></div>
+      <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 14px 16px;"><div style="display: flex; gap: 8px; align-items: baseline;"><span style="font-family: 'Cascadia Code', monospace; font-size: 9.5px; color: #0f131a; background: #45d945; border-radius: 3px; padding: 1px 6px; font-weight: 600;">CSS</span><span style="font-family: 'Cascadia Code', monospace; font-size: 12px; color: #d6dce6;">@property + oklch</span></div><div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 12.5px; line-height: 1.5; color: #98a1ad; margin-top: 8px;">Sandbox-hue som ekte animerbar token. Prøv: <input type="range" min="0" max="360" step="1" value="{{ hue }}" onChange="{{ setHue }}" aria-label="Roter fargetonen" style="width: 80px; accent-color: {{ hueAccent }}; cursor: pointer; vertical-align: middle;"> <span style="font-family: 'Cascadia Code', monospace; font-size: 11px; color: {{ hueAccent }};">--hue: {{ hue }}</span></div></div>
+      <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 14px 16px;"><div style="display: flex; gap: 8px; align-items: baseline;"><span style="font-family: 'Cascadia Code', monospace; font-size: 9.5px; color: #0f131a; background: #45d945; border-radius: 3px; padding: 1px 6px; font-weight: 600;">CSS</span><span style="font-family: 'Cascadia Code', monospace; font-size: 12px; color: #d6dce6;">Container queries</span></div><div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 12.5px; line-height: 1.5; color: #98a1ad; margin-top: 8px;">Case-kort og badges eier sin egen respons — gjenbrukbare overalt uten breakpoint-styring.</div></div>
+      <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 14px 16px;"><div style="display: flex; gap: 8px; align-items: baseline;"><span style="font-family: 'Cascadia Code', monospace; font-size: 9.5px; color: #0f131a; background: #45d945; border-radius: 3px; padding: 1px 6px; font-weight: 600;">CSS</span><span style="font-family: 'Cascadia Code', monospace; font-size: 12px; color: #d6dce6;">:has()</span></div><div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 12.5px; line-height: 1.5; color: #98a1ad; margin-top: 8px;">Ekspanderte «nå:»-rader og tilstander i ren CSS der det holder — mindre JS å laste.</div></div>
+      <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 14px 16px;"><div style="display: flex; gap: 8px; align-items: baseline;"><span style="font-family: 'Cascadia Code', monospace; font-size: 9.5px; color: #0f131a; background: #7db4e8; border-radius: 3px; padding: 1px 6px; font-weight: 600;">API</span><span style="font-family: 'Cascadia Code', monospace; font-size: 12px; color: #d6dce6;">Popover + dialog</span></div><div style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 12.5px; line-height: 1.5; color: #98a1ad; margin-top: 8px;">Tilgjengelige overlays (kontaktskjema) gratis fra plattformen — fokusfelle inkludert.</div></div>
+    </div>
+  </section>
+
+  <!-- MOTION -->
+  <section data-screen-label="06 Motion v2" style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="font-family: 'Cascadia Code', monospace; font-size: 11px; letter-spacing: 0.12em; color: #98a1ad;">06 · MOTION V2 — ÉN ORKESTRERT ÅPNING, RESTEN STÅR STILLE</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 16px 18px; font-family: 'Cascadia Code', monospace; font-size: 11px; line-height: 2.1; color: #d6dce6;">
+        <div style="font-size: 10px; letter-spacing: 0.1em; color: #98a1ad; margin-bottom: 4px;">INTRO-SEKVENS (TOTALT &lt; 600MS)</div>
+        <div><span style="color: #45d945;">0ms</span> terminal-prompt + tekst synlig umiddelbart (LCP)</div>
+        <div><span style="color: #45d945;">120ms</span> badges inn, staggered 40ms, translateY 4px</div>
+        <div><span style="color: #45d945;">280ms</span> displayordet vekter inn: wdth 60 → basis</div>
+        <div><span style="color: #45d945;">480ms</span> ticker og puls starter</div>
+        <div style="color: #e8949c;">reduced motion → alt står ferdig ved 0ms, puls og ticker statiske</div>
+      </div>
+      <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 16px 18px; font-family: 'Cascadia Code', monospace; font-size: 11px; line-height: 2.1; color: #d6dce6;">
+        <div style="font-size: 10px; letter-spacing: 0.1em; color: #98a1ad; margin-bottom: 4px;">LØPENDE</div>
+        <div>ticker: 30s lineær loop, pauser ved hover/fokus</div>
+        <div>puls-dot: 2.4s, maks 9px radius — aldri mer enn én puls synlig</div>
+        <div>kinetisk ord: scroll-drevet wdth (CSS), ellers hover</div>
+        <div>trykk-tilstand (modul A fra v1): beholdt overalt</div>
+        <div>easing: cubic-bezier(0.2, 0, 0, 1) · ingen bounce</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAV / SKJEMA / RESPONS -->
+  <section data-screen-label="07 Nav skjema respons" style="display: flex; flex-direction: column; gap: 14px;">
+    <div style="font-family: 'Cascadia Code', monospace; font-size: 11px; letter-spacing: 0.12em; color: #98a1ad;">07 · NAVIGASJON · SKJEMA · RESPONS</div>
+    <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; overflow: hidden;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 18px; border-bottom: 1px solid #262e3b; flex-wrap: wrap;">
+        <span style="font-family: 'Cascadia Code', monospace; font-size: 12.5px; color: #d6dce6;">stian<span style="color: #45d945;">.</span></span>
+        <nav aria-label="Hovedmeny (demo)" style="display: flex; gap: 4px; overflow-x: auto;">
+          <a href="#" style="font-family: 'Cascadia Code', monospace; font-size: 12px; color: #d6dce6; text-decoration: none; padding: 6px 10px; border-radius: 6px; display: flex; align-items: center; gap: 6px; white-space: nowrap;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #45d945;"></span>forside</a>
+          <a href="#" style="font-family: 'Cascadia Code', monospace; font-size: 12px; color: #98a1ad; text-decoration: none; padding: 6px 10px; border-radius: 6px; white-space: nowrap;" style-hover="color: #d6dce6; background: #1c2430;">prosjekter</a>
+          <a href="#" style="font-family: 'Cascadia Code', monospace; font-size: 12px; color: #98a1ad; text-decoration: none; padding: 6px 10px; border-radius: 6px; white-space: nowrap;" style-hover="color: #d6dce6; background: #1c2430;">læringsreisen</a>
+          <a href="#" style="font-family: 'Cascadia Code', monospace; font-size: 12px; color: #98a1ad; text-decoration: none; padding: 6px 10px; border-radius: 6px; white-space: nowrap;" style-hover="color: #d6dce6; background: #1c2430;">/sandbox</a>
+          <a href="#" style="font-family: 'Cascadia Code', monospace; font-size: 12px; color: #98a1ad; text-decoration: none; padding: 6px 10px; border-radius: 6px; white-space: nowrap;" style-hover="color: #d6dce6; background: #1c2430;">slik jobber jeg</a>
+          <a href="#" style="font-family: 'Cascadia Code', monospace; font-size: 12px; color: #98a1ad; text-decoration: none; padding: 6px 10px; border-radius: 6px; white-space: nowrap;" style-hover="color: #d6dce6; background: #1c2430;">om/kontakt</a>
+        </nav>
+      </div>
+      <div style="padding: 12px 18px; font-family: 'Cascadia Code', monospace; font-size: 10.5px; line-height: 1.7; color: #98a1ad;">nav-spec: synlig rad på ALLE flater — ingen hamburger (6 korte punkter skal ikke gjemmes bak et klikk) · mobil: samme rad, overflow-x scroll med fade-kant · aktiv side = grønn dot + --tekst · fokus: 2px outline --aksent-1 · semantisk &lt;nav&gt; + aria-current="page"</div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 18px;">
+        <div style="font-family: 'Cascadia Code', monospace; font-size: 10px; letter-spacing: 0.1em; color: #45d945; margin-bottom: 12px;">KONTAKTSKJEMA — DIT PENDING RESOLVES</div>
+        <label style="display: block; font-family: 'Cascadia Code', monospace; font-size: 11px; color: #98a1ad; margin-bottom: 4px;" for="demo-navn">navn</label>
+        <input id="demo-navn" type="text" placeholder="Kari Nordmann" style="width: 100%; box-sizing: border-box; background: #0f131a; border: 1px solid #3a4553; border-radius: 8px; padding: 10px 12px; font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 14px; color: #d6dce6; outline: none;" style-focus="border-color: #7db4e8; outline: 2px solid #7db4e8; outline-offset: 1px;">
+        <label style="display: block; font-family: 'Cascadia Code', monospace; font-size: 11px; color: #98a1ad; margin: 12px 0 4px;" for="demo-epost">e-post</label>
+        <input id="demo-epost" type="email" value="kari@nordmann" style="width: 100%; box-sizing: border-box; background: #0f131a; border: 1px solid #e8949c; border-radius: 8px; padding: 10px 12px; font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 14px; color: #d6dce6; outline: none;" style-focus="outline: 2px solid #e8949c; outline-offset: 1px;" aria-describedby="demo-feil">
+        <div id="demo-feil" style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 12.5px; color: #e8949c; margin-top: 5px;">⚠ E-postadressen mangler et domene — f.eks. kari@nordmann.no</div>
+        <label style="display: block; font-family: 'Cascadia Code', monospace; font-size: 11px; color: #98a1ad; margin: 12px 0 4px;" for="demo-melding">melding</label>
+        <textarea id="demo-melding" rows="2" placeholder="Hei Stian, vi ser etter …" style="width: 100%; box-sizing: border-box; background: #0f131a; border: 1px solid #3a4553; border-radius: 8px; padding: 10px 12px; font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 14px; color: #d6dce6; outline: none; resize: vertical;" style-focus="border-color: #7db4e8; outline: 2px solid #7db4e8; outline-offset: 1px;"></textarea>
+        <button style="font-family: 'Atkinson Hyperlegible', sans-serif; font-size: 14px; font-weight: 700; background: #45d945; color: #0f131a; border: none; border-radius: 9px; padding: 11px 20px; cursor: pointer; margin-top: 14px; box-shadow: 0 2px 0 #2c8a2c; transition: transform 0.08s, box-shadow 0.08s;" style-hover="background: #5ee65e;" style-active="transform: translateY(2px); box-shadow: 0 0 0 #2c8a2c;" style-focus="outline: 2px solid #d6dce6; outline-offset: 2px;">resolve(kontakt) →</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 16px 18px; font-family: 'Cascadia Code', monospace; font-size: 10.5px; line-height: 1.9; color: #98a1ad;">
+          <div style="font-size: 10px; letter-spacing: 0.1em; color: #45d945; margin-bottom: 4px;">SKJEMA-SPEC</div>
+          <div>felter: navn (valgfri), e-post (påkrevd), melding (påkrevd)</div>
+          <div>validering: klarspråk + ikon — aldri farge alene · feil = --aksent-2</div>
+          <div>fokus: 2px outline, feilfelt beholder rød kant</div>
+          <div>spam: honeypot-felt + tidssjekk — ingen captcha, ingen cookies</div>
+          <div>backend: serverless endepunkt uten sporing (f.eks. e-postvarsel) · suksess: «Promise resolved. Svarer innen 24t.»</div>
+        </div>
+        <div style="background: #161c26; border: 1px solid #262e3b; border-radius: 12px; padding: 16px 18px; font-family: 'Cascadia Code', monospace; font-size: 10.5px; line-height: 1.9; color: #98a1ad;">
+          <div style="font-size: 10px; letter-spacing: 0.1em; color: #45d945; margin-bottom: 4px;">RESPONS-SPEC (MOBIL FØRST)</div>
+          <div>&lt; 680px: alle grids → 1 kolonne · navnetrekk følger clamp()</div>
+          <div>badges: wrap til 2 rader, aldri horisontal scroll</div>
+          <div>ticker: uendret fart · heatmap: horisontal scroll m/ fade</div>
+          <div>terminal/kode: 12px min, aldri wrap — scroll-x</div>
+          <div>klikkflater ≥ 44×44px · hover-effekter har fokus-tvilling</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top: 1px dashed #262e3b; padding-top: 18px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+    <span style="font-family: 'Cascadia Code', monospace; font-size: 10.5px; color: #98a1ad;">Endelig guide v2.0 · mørk-først · arver v1s dagmodus, moduler og sjekkliste · det som ikke er redefinert her, gjelder fra v1</span>
+    <span style="font-family: 'Cascadia Code', monospace; font-size: 10.5px; color: #45d945;">exit 0</span>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { hero: false, hue: 145 };
+
+  _cursor(key, color) {
+    this._cursors = this._cursors || {};
+    if (!this._cursors[key]) {
+      this._cursors[key] = React.createElement('span', {
+        'data-cursor': '1',
+        'aria-hidden': 'true',
+        style: { display: 'inline-block', width: '8px', height: '1.1em', verticalAlign: 'text-bottom', marginLeft: '3px', background: color, animation: 'blink 1.06s steps(2, start) infinite' }
+      });
+    }
+    return this._cursors[key];
+  }
+
+  _heat(colors) {
+    if (!this._heatCache) {
+      const weeks = [];
+      let seed = 42;
+      const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+      for (let w = 0; w < 44; w++) {
+        const days = [];
+        for (let d = 0; d < 7; d++) {
+          const boost = w > 34 ? 0.22 : w > 22 ? 0.1 : 0;
+          const r = rnd() + boost;
+          const lvl = r > 0.93 ? 4 : r > 0.81 ? 3 : r > 0.69 ? 2 : r > 0.56 ? 1 : 0;
+          days.push({ c: colors[lvl] });
+        }
+        weeks.push({ days });
+      }
+      this._heatCache = weeks;
+    }
+    return this._heatCache;
+  }
+
+  renderVals() {
+    return {
+      pendHero: this.state.hero ? '<fulfilled>: "si hei →"' : '<pending>',
+      togHero: () => this.setState((s) => ({ hero: !s.hero })),
+      curHero: this._cursor('hero', '#b8c0cc'),
+      hue: this.state.hue,
+      setHue: (e) => this.setState({ hue: Number(e.target.value) }),
+      hueAccent: 'oklch(72% 0.17 ' + this.state.hue + ')',
+      heat: this._heat(['#1c2430', '#234a2c', '#2f6b3a', '#3fa04a', '#45d945'])
+    };
+  }
+}
+</script>
+</body>
+</html>

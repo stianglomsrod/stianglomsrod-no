@@ -1,0 +1,17 @@
+# Fase 0-arbeidsområde (klon av dagens side + QA-verktøy) — versjoneres ikke
+_baseline/
+
+# Avhengigheter og bygg
+node_modules/
+dist/
+.astro/
+.vercel/
+
+# Miljø og secrets
+.env
+.env.*
+
+# Diverse
+*.log
+.DS_Store
+Thumbs.db
