@@ -1,0 +1,159 @@
+---
+import { hentHeatmap } from '../lib/github';
+
+/* Contribution-heatmap (Done 7): GraphQL contributionsCollection bak
+   GITHUB_TOKEN (kun server-side). Matrisen er dekorativ for øyet —
+   skjermlesere får summen i klartekst. Uten token/nettverk: stille
+   plassholder, ingen konsollfeil. */
+
+const heatmap = await hentHeatmap();
+---
+
+<div class="aktivitet">
+  {heatmap ? (
+    <>
+      <div class="hode">
+        <span class="label">
+          AKTIVITET · {heatmap.totalt} CONTRIBUTIONS SISTE ÅR · GITHUB API
+          {heatmap.kilde === 'fallback' && ' · STATISK SNAPSHOT'}
+        </span>
+        <span class="legende" aria-hidden="true">
+          mindre
+          <span class="rute niv-0"></span>
+          <span class="rute niv-1"></span>
+          <span class="rute niv-2"></span>
+          <span class="rute niv-3"></span>
+          <span class="rute niv-4"></span>
+          mer
+        </span>
+      </div>
+      <p class="sr-only">{heatmap.totalt} contributions siste år.</p>
+      <div class="scroller">
+        <div class="grid" aria-hidden="true">
+          {heatmap.uker.map((uke) => (
+            <div class="uke">
+              {uke.dager.map((dag) => (
+                <span class={`rute niv-${dag.nivaa}`} title={`${dag.dato}: ${dag.antall}`}></span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="spec-linje">
+        spec: GraphQL contributionsCollection, hentet ved bygg · fargerampe fra
+        --heat-tokens · dekorativ for øyet — summen står i klartekst
+      </div>
+    </>
+  ) : (
+    <div class="venter">
+      <span class="label">AKTIVITET · CONTRIBUTION-HEATMAP</span>
+      <p class="venter-tekst">
+        Matrisen kobles på når <code>GITHUB_TOKEN</code> er konfigurert i
+        byggemiljøet (GraphQL-API-et krever token). Commit-feeden over henter
+        uansett.
+      </p>
+    </div>
+  )}
+</div>
+
+<style>
+  .aktivitet {
+    background: var(--flate);
+    border: 1px solid var(--linje);
+    border-radius: var(--radius-md);
+    padding: 16px 18px;
+    max-width: 760px;
+  }
+
+  .hode {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--s-3);
+    flex-wrap: wrap;
+    gap: var(--s-2);
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--dempet);
+  }
+
+  .legende {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    color: var(--dempet);
+  }
+
+  .scroller {
+    overflow-x: auto;
+  }
+
+  @media (max-width: 680px) {
+    .scroller {
+      mask-image: linear-gradient(90deg, #000 calc(100% - 16px), transparent);
+    }
+  }
+
+  .grid {
+    display: flex;
+    gap: 3px;
+    width: max-content;
+  }
+
+  .uke {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .rute {
+    width: 11px;
+    height: 11px;
+    border-radius: 2.5px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .niv-0 {
+    background: var(--heat-0);
+  }
+  .niv-1 {
+    background: var(--heat-1);
+  }
+  .niv-2 {
+    background: var(--heat-2);
+  }
+  .niv-3 {
+    background: var(--heat-3);
+  }
+  .niv-4 {
+    background: var(--heat-4);
+  }
+
+  .spec-linje {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    line-height: 1.7;
+    color: var(--dempet);
+    margin-top: var(--s-3);
+  }
+
+  .venter-tekst {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    line-height: 1.7;
+    color: var(--dempet);
+    margin: var(--s-2) 0 0;
+    max-width: 60ch;
+  }
+
+  .venter-tekst code {
+    color: var(--konst);
+  }
+</style>

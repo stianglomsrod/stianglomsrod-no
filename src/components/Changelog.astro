@@ -1,0 +1,255 @@
+---
+import now from '../../now.json';
+import { hentSisteCommits } from '../lib/github';
+
+/* CHANGELOG (Done 7): kuraterte milepæler + levende commit-feed.
+   Korrektur-dialekten (modul B) er lov KUN her og i kolofonen:
+   gjennomstrykning i --aksent-2, margnotat ≤ ±0.5°, klikkbart stempel.
+   Milepæltekstene er kuratert innhold (lo-fi til endelig copy);
+   v2.x-beta-raden er datadrevet fra now.json. */
+
+const commits = await hentSisteCommits(5);
+const kilde = commits[0]?.kilde ?? 'fallback';
+
+const datoKort = (iso: string) =>
+  new Date(iso).toLocaleDateString('nb-NO', { day: 'numeric', month: 'short' });
+
+interface Milepael {
+  versjon: string;
+  tekst: string;
+  strek?: string;
+  stempel?: boolean;
+  notat?: string;
+}
+
+const milepaeler: Milepael[] = [
+  {
+    versjon: 'v2.x-beta',
+    strek: 'ferdig utlært',
+    tekst: `nå — ${now.fullstack} + ${now.ki}`,
+  },
+  {
+    versjon: 'v2.0',
+    tekst: '2026 — Klar i produksjon. Master i digital læringsdesign levert (OsloMet).',
+    stempel: true,
+  },
+  {
+    versjon: 'v1.1',
+    tekst: 'underveis i masteren — pd-app, forløperen til Klar: Vue + Django, 132 commits skrevet for hånd.',
+  },
+  {
+    versjon: 'v1.0',
+    tekst: '2024 — CS50x fullført (Harvard). Ordkryss som sluttprosjekt.',
+  },
+  {
+    versjon: 'v0.2',
+    tekst: '2018 — lektor på Kongeveien skole. Programmering inn i klasserommet: micro:bit, Python, JavaScript.',
+  },
+  {
+    versjon: 'v0.1',
+    tekst: '2007 — Introduction to Programming: karakter D.',
+    notat: 'dokumentert som known issue',
+  },
+];
+---
+
+<div class="changelog">
+  <div class="topplinje">CHANGELOG · KURATERTE MILEPÆLER + LEVENDE COMMITS</div>
+
+  {milepaeler.map((m) => (
+    <div class="rad">
+      <span class="versjon">{m.versjon}</span>
+      <span class="tekst">
+        {m.strek && (
+          <>
+            <s class="korrektur">{m.strek}</s>{' '}
+          </>
+        )}
+        {m.tekst}
+        {m.stempel && (
+          <button
+            type="button"
+            class="stempel"
+            data-stempel
+            aria-pressed="true"
+            aria-label="Stempel: godkjent — klikk for å veksle"
+          >GODKJENT</button>
+        )}
+        {m.notat && <span class="margnotat">← {m.notat}</span>}
+      </span>
+    </div>
+  ))}
+
+  <div class="feed-linje">
+    SISTE COMMITS · GITHUB API, HENTET VED BYGG · {kilde === 'live' ? 'LIVE' : 'STATISK SNAPSHOT'}
+  </div>
+
+  {commits.map((c) => (
+    <div class="rad commit-rad">
+      <span class="hash">{c.sha}</span>
+      <span class="melding" title={c.repo}>{c.melding}</span>
+      <span class="tid" data-tidspunkt={c.tidspunkt} data-parens="nei">{datoKort(c.tidspunkt)}</span>
+    </div>
+  ))}
+
+  <div class="spec-linje">
+    spec: milepæler kurateres manuelt · commits fra GitHub REST
+    /users/stianglomsrod/events, hentet ved bygg, fallback til siste statiske
+    snapshot — reisen kan aldri bli stale
+  </div>
+</div>
+
+<style>
+  .changelog {
+    background: var(--flate);
+    border: 1px solid var(--linje);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    max-width: 760px;
+  }
+
+  .topplinje,
+  .feed-linje {
+    padding: 10px 16px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--dempet);
+    border-bottom: 1px solid var(--linje);
+  }
+
+  .feed-linje {
+    background: var(--bg);
+    font-size: 9.5px;
+    border-top: 1px solid var(--linje);
+  }
+
+  .rad {
+    display: flex;
+    gap: var(--s-3);
+    align-items: baseline;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--linje);
+  }
+
+  .rad:last-of-type {
+    border-bottom: none;
+  }
+
+  .versjon {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--aksent-1);
+    width: 84px;
+    flex-shrink: 0;
+  }
+
+  .tekst {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--tekst);
+  }
+
+  /* Modul B: korrektur-dialekt — kun på denne sida + kolofonen */
+  .korrektur {
+    text-decoration-color: var(--aksent-2);
+    text-decoration-thickness: 2px;
+  }
+
+  .margnotat {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--dempet);
+    transform: rotate(-0.5deg);
+    margin-left: var(--s-2);
+  }
+
+  .stempel {
+    all: unset;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 2px 9px;
+    margin-left: var(--s-2);
+    border: 2px solid var(--godkjent);
+    border-radius: 3px;
+    color: var(--godkjent);
+    transform: rotate(-2deg);
+    display: inline-block;
+    cursor: pointer;
+    transition: opacity var(--dur-mikro);
+  }
+
+  .stempel:hover {
+    opacity: 0.8;
+  }
+
+  .stempel:focus-visible {
+    outline: 2px solid var(--godkjent);
+    outline-offset: 2px;
+  }
+
+  .stempel[aria-pressed='false'] {
+    border-color: var(--aksent-2);
+    color: var(--aksent-2);
+  }
+
+  .commit-rad {
+    padding: 9px 16px;
+  }
+
+  .hash {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--konst);
+    width: 84px;
+    flex-shrink: 0;
+  }
+
+  .melding {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--tekst);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .tid {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--dempet);
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .spec-linje {
+    padding: 10px 16px 12px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    line-height: 1.7;
+    color: var(--dempet);
+  }
+</style>
+
+<script>
+  import { settRelativeTider } from '../lib/relativ-tid';
+
+  settRelativeTider();
+
+  // Stempelet er lekenhet med adresse: veksler GODKJENT ↔ PENDING.
+  document.querySelectorAll<HTMLButtonElement>('[data-stempel]').forEach((s) => {
+    s.addEventListener('click', () => {
+      const godkjent = s.getAttribute('aria-pressed') === 'true';
+      s.setAttribute('aria-pressed', String(!godkjent));
+      s.textContent = godkjent ? 'PENDING' : 'GODKJENT';
+      s.setAttribute(
+        'aria-label',
+        godkjent ? 'Stempel: pending — klikk for å veksle' : 'Stempel: godkjent — klikk for å veksle'
+      );
+    });
+  });
+</script>

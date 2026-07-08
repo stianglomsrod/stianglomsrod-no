@@ -1,21 +1,23 @@
 ---
 import Side from '../layouts/Side.astro';
-
-/* Skjelett: CHANGELOG-format — kuraterte milepæler + levende commit-feed
-   + contribution-heatmap (Done 7). Korrektur-dialekten (modul B) er lov
-   KUN her og i kolofonen. */
+import Changelog from '../components/Changelog.astro';
+import Heatmap from '../components/Heatmap.astro';
 ---
 
 <Side
   title="Læringsreisen — Stian Glomsrød"
-  description="CHANGELOG for et menneske: kuraterte milepæler og levende commits."
+  description="CHANGELOG for et menneske: kuraterte milepæler, levende commits og aktivitet."
 >
   <p class="kicker">CHANGELOG</p>
   <h1>Læringsreisen</h1>
   <p class="dempet">
-    Kuraterte milepæler + levende commit-feed fra GitHub bygges her, i
-    CHANGELOG-format.
+    Versjonsloggen for et menneske under utvikling: kuraterte milepæler øverst,
+    levende commits fra GitHub under. Reisen er ikke ferdig — det er poenget.
   </p>
+  <div class="stabel">
+    <Changelog />
+    <Heatmap />
+  </div>
 </Side>
 
 <style>
@@ -35,5 +37,12 @@ import Side from '../layouts/Side.astro';
   .dempet {
     color: var(--dempet);
     max-width: 68ch;
+  }
+
+  .stabel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    margin-top: var(--s-5);
   }
 </style>

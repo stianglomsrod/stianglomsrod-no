@@ -1,13 +1,13 @@
 ---
 import now from '../../now.json';
-import { hentSisteCommit } from '../lib/github';
+import { hentSisteCommits } from '../lib/github';
 
 /* Ticker (Done 6): now.json + siste commit i 30s lineær loop. Pauser ved
    hover/fokus + eksplisitt pausekontroll ≥ 44×44 px med aria-pressed.
    Båndet er dekorativt (aria-hidden); skjermlesere får innholdet som
    statisk tekst. Reduced motion → statisk. */
 
-const commit = await hentSisteCommit();
+const [commit] = await hentSisteCommits(1);
 const commitDato = new Date(commit.tidspunkt).toLocaleDateString('nb-NO', {
   day: 'numeric',
   month: 'long',
@@ -163,6 +163,8 @@ const elementer = [
 </style>
 
 <script>
+  import { settRelativeTider } from '../lib/relativ-tid';
+
   // Pausekontroll (aria-pressed) + relativ tid for siste commit.
   const ticker = document.querySelector<HTMLElement>('.ticker');
   const knapp = document.getElementById('ticker-pause');
@@ -176,16 +178,5 @@ const elementer = [
     knapp.textContent = pauset ? '⏸' : '▶';
   });
 
-  document.querySelectorAll<HTMLElement>('[data-tidspunkt]').forEach((el) => {
-    const da = new Date(el.dataset.tidspunkt ?? '').getTime();
-    if (Number.isNaN(da)) return;
-    const min = Math.max(1, Math.round((Date.now() - da) / 60000));
-    const tekst =
-      min < 60
-        ? `for ${min} min siden`
-        : min < 60 * 24
-          ? `for ${Math.round(min / 60)} t siden`
-          : `for ${Math.round(min / 1440)} d siden`;
-    el.textContent = `(${tekst})`;
-  });
+  settRelativeTider();
 </script>

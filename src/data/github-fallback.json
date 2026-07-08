@@ -1,9 +1,36 @@
 {
-  "sisteCommit": {
-    "repo": "stianglomsrod/stianglomsrod-no",
-    "sha": "1408ea0",
-    "melding": "feat: nav, footer og sideskjelett for alle 8 ruter",
-    "tidspunkt": "2026-07-08T20:57:46Z"
-  },
-  "hentet": "2026-07-08T21:00:00Z"
+  "sisteCommits": [
+    {
+      "repo": "stianglomsrod/stianglomsrod-no",
+      "sha": "d1bee42",
+      "melding": "feat: ticker med now.json + siste commit og statisk fallback (Done 6-grunnlag)",
+      "tidspunkt": "2026-07-08T21:01:25Z"
+    },
+    {
+      "repo": "stianglomsrod/stianglomsrod-no",
+      "sha": "1408ea0",
+      "melding": "feat: nav, footer og sideskjelett for alle 8 ruter (Done 1-grunnlag, Done 11)",
+      "tidspunkt": "2026-07-08T20:57:46Z"
+    },
+    {
+      "repo": "stianglomsrod/stianglomsrod-no",
+      "sha": "da56522",
+      "melding": "feat: hero med laast spec (Done 2-5-grunnlag)",
+      "tidspunkt": "2026-07-08T20:50:49Z"
+    },
+    {
+      "repo": "stianglomsrod/stianglomsrod-no",
+      "sha": "3bfe07a",
+      "melding": "feat: self-hostede fonter med subsetting (Done 17-grunnlag)",
+      "tidspunkt": "2026-07-08T20:36:31Z"
+    },
+    {
+      "repo": "stianglomsrod/stianglomsrod-no",
+      "sha": "197c0cd",
+      "melding": "feat: scaffold Astro 6 + Vercel-adapter med tokens.css 1:1",
+      "tidspunkt": "2026-07-08T20:27:59Z"
+    }
+  ],
+  "heatmap": null,
+  "hentet": "2026-07-08T21:10:00Z"
 }
