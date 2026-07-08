@@ -1,0 +1,57 @@
+/* ============================================================
+   Self-hostede fonter (Done 17) — alle SIL OFL 1.1, lisensfiler
+   ligger ved fontfilene i public/fonts/.
+
+   - Anybody (Etcetera Type Co): variabel wdth 50–150 / wght 100–900,
+     subsettet til navneglyfer + sifre (9,7 kB) — KUN navnetrekk + badge-tall.
+   - Atkinson Hyperlegible (Braille Institute): 400/700/400i,
+     subsettet til latin + latin-ext + typografisk tegnsett + piler.
+   - Cascadia Code (Microsoft): variabel wght 200–700, samme subset
+     + geometriske former (▪ ▮) for terminal/ticker.
+
+   Subset-pipeline: fonttools/pyftsubset fra offisielle kilder
+   (google/fonts- og microsoft/cascadia-code-repoene).
+   TODO (perf-pass, Done 13): size-adjust-kalibrerte fallbacks for
+   CLS-fri lasting.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Anybody';
+  src: url('/fonts/anybody-navnetrekk.woff2') format('woff2');
+  font-weight: 100 900;
+  font-stretch: 50% 150%;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cascadia Code';
+  src: url('/fonts/cascadia-code-vf.woff2') format('woff2');
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('/fonts/atkinson-hyperlegible-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('/fonts/atkinson-hyperlegible-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Atkinson Hyperlegible';
+  src: url('/fonts/atkinson-hyperlegible-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
