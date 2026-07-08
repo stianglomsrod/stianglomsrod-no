@@ -1,23 +1,82 @@
 ---
 import Side from '../layouts/Side.astro';
 import Kontaktskjema from '../components/Kontaktskjema.astro';
+import profil from '../data/profil.json';
+import now from '../../now.json';
 
-/* Skjelett: bygges ut med portrett og STIAN(1)-manside. Kontaktskjemaet
-   (Done 8) er på plass. */
+/* Om/kontakt: portrett (ekte foto, ingen filter), STIAN(1)-manside og
+   kontaktskjemaet. Copy er lo-fi til endelig tekst. */
 ---
 
 <Side
   title="Om og kontakt — Stian Glomsrød"
-  description="Hvem Stian er, og hvordan du tar kontakt."
+  description="Hvem Stian er, hva han ser etter, og hvordan du tar kontakt."
 >
   <p class="kicker">OM / KONTAKT</p>
   <h1>Om og kontakt</h1>
-  <p class="dempet">
-    Lærer med master i digital læringsdesign (OsloMet, 2026), på vei inn i
-    utviklerrollen. Portrett, STIAN(1)-mansiden og mer kommer her.
-  </p>
+
+  <div class="topp">
+    <img
+      class="portrett"
+      src="/bilder/stian-portrett.jpg"
+      alt="Portrett av Stian Glomsrød"
+      width="600"
+      height="800"
+      loading="eager"
+    />
+    <div class="bio">
+      <p>
+        Lektor med master i digital læringsdesign (OsloMet, 2026), på vei inn
+        i utviklerrollen. Bygger ekte ting med agentisk KI og dokumenterer
+        alt. Halden / remote.
+      </p>
+      <p class="bio-detalj">
+        Små påstander, tunge kvitteringer — det som står her skal kunne
+        etterprøves ett klikk unna.
+      </p>
+    </div>
+  </div>
+
+  <section class="manside" aria-label="STIAN(1) — manside" translate="no">
+    <div class="man-hode" aria-hidden="true">
+      <span>STIAN(1)</span><span>Brukerhåndbok</span><span>STIAN(1)</span>
+    </div>
+    <div class="man-seksjon">
+      <h2>NAVN</h2>
+      <p>stian — lærer i overgang til utvikler. halden edition.</p>
+    </div>
+    <div class="man-seksjon">
+      <h2>SYNOPSIS</h2>
+      <p>stian [--utvikler] [--ux] [--ai-first] <span class="konst">--tilgjengelig=nå</span></p>
+    </div>
+    <div class="man-seksjon">
+      <h2>BESKRIVELSE</h2>
+      <p>
+        Master i digital læringsdesign (OsloMet, 2026). Bygger ekte ting med
+        agentisk KI og dokumenterer alt. Søker {now.soker}. Små påstander,
+        tunge kvitteringer.
+      </p>
+    </div>
+    <div class="man-seksjon">
+      <h2>EXIT STATUS</h2>
+      <p>Returnerer 0 ved ansettelse.</p>
+    </div>
+    <div class="man-seksjon">
+      <h2>SE OGSÅ</h2>
+      <p>
+        <a href="/prosjekter#klar">klar(1)</a>,
+        <a href="/prosjekter">companion(1)</a>,
+        <a href="/sandbox">sandbox(7)</a>
+      </p>
+    </div>
+  </section>
+
   <section id="kontakt" aria-labelledby="kontakt-tittel">
-    <h2 id="kontakt-tittel">Ta kontakt</h2>
+    <h2 class="kontakt-tittel" id="kontakt-tittel">Ta kontakt</h2>
+    <p class="kontakt-ingress">
+      Svarer innen 24 timer på hverdager. E-post går til
+      {profil.kontakt.epost} — ingenting lagres på veien.
+    </p>
     <Kontaktskjema />
   </section>
 </Side>
@@ -33,11 +92,100 @@ import Kontaktskjema from '../components/Kontaktskjema.astro';
 
   h1 {
     font-size: var(--tekst-tittel);
-    margin: 0 0 var(--s-3);
+    margin: 0 0 var(--s-4);
   }
 
-  .dempet {
+  .topp {
+    display: flex;
+    gap: var(--s-5);
+    align-items: flex-start;
+    max-width: 720px;
+  }
+
+  .portrett {
+    width: 168px;
+    height: 200px;
+    object-fit: cover;
+    object-position: 50% 10%;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--linje);
+    flex-shrink: 0;
+  }
+
+  .bio p {
+    margin: 0 0 var(--s-3);
+    line-height: 1.6;
+    max-width: 56ch;
+  }
+
+  .bio-detalj {
+    color: var(--dempet);
+  }
+
+  @media (max-width: 560px) {
+    .topp {
+      flex-direction: column;
+    }
+  }
+
+  /* STIAN(1) — manside på terminalflaten (ankeret, identisk i begge temaer) */
+  .manside {
+    background: var(--terminal);
+    border: 1px solid var(--linje);
+    border-radius: var(--radius-md);
+    padding: var(--s-4) var(--s-5);
+    margin-top: var(--s-6);
+    max-width: 640px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    line-height: 1.85;
+    color: var(--kode-tekst);
+  }
+
+  .man-hode {
+    display: flex;
+    justify-content: space-between;
+    color: var(--syn-komm);
+    font-size: 11px;
+    margin-bottom: var(--s-3);
+  }
+
+  .man-seksjon h2 {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--term-groenn);
+    margin: var(--s-3) 0 0;
+    font-weight: 600;
+  }
+
+  .man-seksjon p {
+    margin: 0;
+    padding-left: 4ch;
+    max-width: 60ch;
+  }
+
+  .konst {
+    color: var(--syn-konst);
+  }
+
+  .man-seksjon a {
+    color: var(--syn-fn);
+  }
+
+  @media (max-width: 560px) {
+    .man-seksjon p {
+      padding-left: 2ch;
+    }
+  }
+
+  .kontakt-tittel {
+    font-size: 18px;
+    margin: var(--s-7) 0 var(--s-2);
+  }
+
+  .kontakt-ingress {
     color: var(--dempet);
     max-width: 68ch;
+    margin: 0 0 var(--s-4);
   }
 </style>

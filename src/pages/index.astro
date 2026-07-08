@@ -2,6 +2,8 @@
 import Side from '../layouts/Side.astro';
 import Hero from '../components/Hero.astro';
 import Ticker from '../components/Ticker.astro';
+import ProsjektKort from '../components/ProsjektKort.astro';
+import prosjekter from '../data/prosjekter.json';
 ---
 
 <Side
@@ -10,4 +12,60 @@ import Ticker from '../components/Ticker.astro';
 >
   <Ticker slot="topp" />
   <Hero />
+  <section class="bevis" aria-labelledby="bevis-tittel">
+    <h2 class="bevis-kicker" id="bevis-tittel">UTVALGTE BEVIS</h2>
+    <div class="bevis-grid">
+      <ProsjektKort
+        tag="Fullstack AI-produkt"
+        tittel="Klar"
+        tekst="PWA for elever med eksekutive vansker. Masterprosjekt — i produksjon."
+        lenker={[
+          { href: '/prosjekter#klar', label: 'case', primaer: true },
+          { href: prosjekter.klar.demo, label: 'demo' },
+        ]}
+      />
+      <ProsjektKort
+        tag="Dokumentert utviklingsflyt"
+        tittel="Companion"
+        tekst={prosjekter.companion.beskrivelse}
+        lenker={[{ href: prosjekter.companion.repo, label: 'kildekode' }]}
+      />
+      <ProsjektKort
+        tag="Enablement og overlevering"
+        tittel={prosjekter.lori.navn}
+        tekst={prosjekter.lori.beskrivelse}
+        lenker={[{ href: prosjekter.lori.url, label: 'nettstedet' }]}
+      />
+    </div>
+    <p class="bevis-mer">
+      <a href="/prosjekter">alle prosjekter →</a>
+    </p>
+  </section>
 </Side>
+
+<style>
+  .bevis {
+    margin-top: var(--s-8);
+  }
+
+  .bevis-kicker {
+    font-family: var(--font-mono);
+    font-size: var(--tekst-label);
+    letter-spacing: 0.12em;
+    color: var(--dempet);
+    font-weight: 400;
+    margin: 0 0 var(--s-3);
+  }
+
+  .bevis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--s-3);
+  }
+
+  .bevis-mer {
+    margin: var(--s-4) 0 0;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+  }
+</style>

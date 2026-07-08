@@ -20,6 +20,14 @@
   "companion": {
     "navn": "Companion (nikkoprogging)",
     "beskrivelse": "Nikkos idé, bygget med agentisk arbeidsflyt: lokal-first, dokumentert, langvarig.",
+    "stack": "Flutter · Dart · Drift/SQLite · lokal-first · PROJECT_DNA, planer, epics og tester",
     "repo": "https://github.com/stianglomsrod/nikkoprogging"
+  },
+  "lori": {
+    "navn": "Lori Frisør",
+    "beskrivelse": "Pragmatisk leveranse for en ekte eier.",
+    "stack": "Astro · Keystatic (eierredigering) · Vercel · handoff-dokumentasjon · valgte å integrere Timma framfor å bygge booking på nytt",
+    "url": "https://lori-frisor.vercel.app/",
+    "repo": "https://github.com/stianglomsrod/lori-frisor"
   }
 }

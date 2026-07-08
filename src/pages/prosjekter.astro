@@ -1,20 +1,132 @@
 ---
 import Side from '../layouts/Side.astro';
+import ProsjektKort from '../components/ProsjektKort.astro';
+import prosjekter from '../data/prosjekter.json';
 
-/* Skjelett: case-kort i formatet problem → innsikt → valg → resultat →
-   læring. Klar er hovedcase (demo + video); deretter Companion,
-   Lori Frisør (betinget Done 19) og Figma-prototypene. */
+/* Case-format fra briefen: problem → innsikt → valg → resultat → læring.
+   Klar er hovedcase. Lori Frisør vises på plassholdernivå (= dagens
+   offentlige nivå: navn + stack + lenker, ingen skjermbilder) til skriftlig
+   godkjenning er arkivert (Done 19). Copy er lo-fi til endelig tekst. */
+
+const klarSteg = [
+  {
+    steg: 'problem',
+    tekst:
+      'Lærere bruker kvelder på å oversette ukeplaner og beskjeder til noe elever med eksekutive vansker faktisk kan bruke. Verktøyene som finnes krever mer struktur enn skolehverdagen har.',
+  },
+  {
+    steg: 'innsikt',
+    tekst:
+      'Fra deltakende design med lærere: lav terskel og tidssparing avgjør om noe blir brukt; hjelp må skje uten stigma; motivasjon må ikke bli press. Behovene ble kartlagt i workshops — lærerne var meddesignere.',
+  },
+  {
+    steg: 'valg',
+    tekst:
+      'Responsiv PWA (React, Next.js, TypeScript, Supabase/PostgreSQL) med rollebasert tilgang — lærer og elev på samme datalag. Smart Import: AI-assistert import av ukebrev med redigerbar forhåndsvisning, så et menneske alltid godkjenner før noe publiseres.',
+  },
+  {
+    steg: 'resultat',
+    tekst:
+      'Fungerende prototype i produksjon, evaluert med lærere. Designvitenskapelig utviklingsarbeid — ikke effektstudie; elever deltok kun i forløperprosjektet.',
+  },
+  {
+    steg: 'læring',
+    tekst:
+      'Prototype og produksjonssystem er to ulike ting. AI som produktvalg trenger et kontrollpunkt, ikke bare en modell. Ærlige avgrensninger er en styrke i møte med folk som kan faget.',
+  },
+];
+
+const klarBilder = [
+  { fil: '/bilder/klar/smart-import.png', alt: 'Skjermbilde av Smart Import i Klar: ukebrev er tolket til en redigerbar forhåndsvisning før publisering' },
+  { fil: '/bilder/klar/laererens-landingsside.png', alt: 'Skjermbilde av lærerens landingsside i Klar med oversikt over klasser og oppgaver' },
+  { fil: '/bilder/klar/elevens-landingsside.png', alt: 'Skjermbilde av elevens landingsside i Klar med dagens plan' },
+];
 ---
 
 <Side
   title="Prosjekter — Stian Glomsrød"
-  description="Case: Klar, Companion, Lori Frisør og prototyper — problem, innsikt, valg, resultat, læring."
+  description="Case: Klar, Companion, Lori Frisør og forløperne — problem, innsikt, valg, resultat, læring."
 >
   <p class="kicker">PROSJEKTER</p>
   <h1>Prosjekter</h1>
-  <p class="dempet">
-    Case-kort i formatet problem → innsikt → valg → resultat → læring bygges
-    her. Klar blir hovedcase.
+  <p class="ingress">
+    Samme arbeidsmåte går igjen i ganske ulike leveranser: et produkt, en
+    langvarig utviklingsflyt og en overlevering til en ekte eier.
+  </p>
+  <p class="format" aria-hidden="true">
+    problem <span>→</span> innsikt <span>→</span> valg <span>→</span> resultat
+    <span>→</span> læring
+  </p>
+
+  <section class="hovedcase" id="klar" aria-labelledby="klar-tittel">
+    <p class="case-tag">HOVEDCASE · FULLSTACK AI-PRODUKT · 2026</p>
+    <h2 id="klar-tittel">Klar</h2>
+    <p class="case-ingress">
+      PWA for elever med eksekutive vansker. Masterprosjekt — i produksjon.
+    </p>
+    <dl class="steg-liste">
+      {klarSteg.map((s) => (
+        <div class="steg">
+          <dt>{s.steg}</dt>
+          <dd>{s.tekst}</dd>
+        </div>
+      ))}
+    </dl>
+    <div class="galleri">
+      {klarBilder.map((b) => (
+        <img src={b.fil} alt={b.alt} loading="lazy" width="1920" height="871" />
+      ))}
+    </div>
+    <p class="case-lenker">
+      <a href={prosjekter.klar.demo} class="primaer" rel="noreferrer noopener">demo →</a>
+      <a href={prosjekter.klar.repo} rel="noreferrer noopener">kildekode →</a>
+    </p>
+  </section>
+
+  <section class="andre" aria-label="Flere prosjekter">
+    <div class="kort-grid">
+      <ProsjektKort
+        tag="Dokumentert utviklingsflyt"
+        tittel="Companion"
+        tekst={prosjekter.companion.stack}
+        note={prosjekter.companion.beskrivelse}
+        lenker={[{ href: prosjekter.companion.repo, label: 'kildekode' }]}
+      />
+      <ProsjektKort
+        tag="Enablement og overlevering"
+        tittel={prosjekter.lori.navn}
+        tekst={prosjekter.lori.stack}
+        note={prosjekter.lori.beskrivelse}
+        lenker={[
+          { href: prosjekter.lori.url, label: 'nettstedet', primaer: true },
+          { href: prosjekter.lori.repo, label: 'kildekode' },
+        ]}
+      />
+      <ProsjektKort
+        tag="Forløperen til Klar"
+        tittel={prosjekter.pdApp.navn}
+        tekst={prosjekter.pdApp.beskrivelse}
+        note="132 commits skrevet for hånd, før agentiske verktøy — et ekte tidsdokument."
+        lenker={[
+          { href: prosjekter.pdApp.frontend, label: 'frontend' },
+          { href: prosjekter.pdApp.backend, label: 'backend' },
+        ]}
+      />
+      <ProsjektKort
+        tag="Grunnmuren"
+        tittel="CS50x + Ordkryss"
+        tekst={prosjekter.cs50x.beskrivelse}
+        note="Sluttprosjektet: et kryssord som genereres og fylles ut. Et lite, ekte studentprosjekt."
+        lenker={[
+          { href: prosjekter.cs50x.sertifikat, label: 'sertifikat' },
+          { href: prosjekter.cs50x.ordkryssDemo, label: 'demo' },
+        ]}
+      />
+    </div>
+  </section>
+
+  <p class="grense">
+    Eksemplene viser arbeidsmåte og tekniske vurderinger, i prototypeskala.
   </p>
 </Side>
 
@@ -32,8 +144,125 @@ import Side from '../layouts/Side.astro';
     margin: 0 0 var(--s-3);
   }
 
-  .dempet {
+  .ingress {
     color: var(--dempet);
     max-width: 68ch;
+    margin: 0;
+  }
+
+  .format {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--dempet);
+    margin: var(--s-3) 0 0;
+  }
+
+  .format span {
+    color: var(--aksent-2);
+  }
+
+  .hovedcase {
+    background: var(--flate);
+    border: 1px solid var(--linje);
+    border-radius: var(--radius-lg);
+    padding: var(--s-5);
+    margin-top: var(--s-6);
+    max-width: 760px;
+  }
+
+  .case-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--aksent-1);
+    margin: 0 0 var(--s-2);
+  }
+
+  h2 {
+    font-size: 24px;
+    margin: 0 0 var(--s-1);
+  }
+
+  .case-ingress {
+    color: var(--dempet);
+    margin: 0 0 var(--s-4);
+  }
+
+  .steg-liste {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+
+  .steg {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: var(--s-3);
+  }
+
+  .steg dt {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--aksent-2);
+  }
+
+  .steg dd {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--tekst);
+    max-width: 62ch;
+  }
+
+  @media (max-width: 680px) {
+    .steg {
+      grid-template-columns: 1fr;
+      gap: var(--s-1);
+    }
+  }
+
+  .galleri {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--s-2);
+    margin-top: var(--s-4);
+  }
+
+  .galleri img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--linje);
+  }
+
+  .case-lenker {
+    display: flex;
+    gap: var(--s-4);
+    margin: var(--s-4) 0 0;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+  }
+
+  .case-lenker a {
+    text-decoration: none;
+  }
+
+  .case-lenker .primaer {
+    color: var(--signal);
+  }
+
+  .kort-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--s-3);
+    margin-top: var(--s-4);
+    max-width: 760px;
+  }
+
+  .grense {
+    font-size: 13px;
+    color: var(--dempet);
+    margin-top: var(--s-5);
   }
 </style>

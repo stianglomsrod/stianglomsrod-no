@@ -1,19 +1,74 @@
 ---
 import Side from '../layouts/Side.astro';
 
-/* Skjelett: README-format — goals, guardrails, human_review. Migrerer
-   dagens 8-stegs arbeidsflyt (se docs/innsikt/INNHOLD-INVENTAR.md). */
+/* README-format fra briefen: goals, guardrails, human_review — pluss
+   arbeidsflyten migrert fra dagens side. Copy er lo-fi til endelig tekst. */
+
+const readme = [
+  { nokkel: 'goals:', verdi: 'definert og skrevet ned før hver økt' },
+  { nokkel: 'guardrails:', verdi: 'hva agenten ikke får gjøre, eksplisitt' },
+  { nokkel: 'human_review:', verdi: 'alle diffs leses av et menneske' },
+];
+
+const steg = [
+  { nr: '01', navn: 'Kontekst', tekst: 'Jeg starter med mål, rammer, kilder og hva som faktisk teller som ferdig.' },
+  { nr: '02', navn: 'Krav', tekst: 'Jeg bryter oppgaven ned i små, reviewbare steg med tydelige akseptansekriterier.' },
+  { nr: '03', navn: 'Menneskelig gjennomgang', tekst: 'Alt modellen foreslår er et utkast jeg leser, vurderer og tar stilling til før det går videre.' },
+  { nr: '04', navn: 'Korreksjon', tekst: 'Jeg tester antagelser, retter feil, strammer scope og følger opp avvik.' },
+  { nr: '05', navn: 'QA', tekst: 'Sjekklister for påstander, teknisk risiko og dokumentasjon før noe markeres som klart.' },
+  { nr: '06', navn: 'Dokumentasjon', tekst: 'Beslutninger, avgrensninger og usikkerheter logges underveis.' },
+  { nr: '07', navn: 'Overlevering', tekst: 'Handoff skrevet slik at andre kan ta arbeidet videre uten muntlig kontekst.' },
+  { nr: '08', navn: 'Kontrollpunkter', tekst: 'Påstander skal ha dekning, private data skal ligge der de hører hjemme, og ingenting er «ferdig» før det er verifisert.' },
+];
 ---
 
 <Side
   title="Slik jobber jeg — Stian Glomsrød"
   description="README for arbeidsmåten: goals, guardrails og menneske i loopen."
 >
-  <p class="kicker">README</p>
+  <p class="kicker">README · SLIK JOBBER JEG</p>
   <h1>Slik jobber jeg</h1>
-  <p class="dempet">
-    goals · guardrails · human_review — README-en for arbeidsmåten bygges her.
+  <p class="ingress">
+    AI-agenter gjør meg raskere, men de får ikke siste ord. Jeg jobber i en
+    fast flyt der hvert steg har en eier og en tydelig grense.
   </p>
+
+  <div class="readme" translate="no">
+    {readme.map((r) => (
+      <div class="readme-rad">
+        <span class="nokkel">{r.nokkel}</span>
+        <span class="verdi">{r.verdi}</span>
+      </div>
+    ))}
+  </div>
+
+  <section aria-labelledby="flyt-tittel">
+    <h2 id="flyt-tittel">Flyten, steg for steg</h2>
+    <ol class="flyt">
+      {steg.map((s) => (
+        <li>
+          <span class="nr" aria-hidden="true">{s.nr}</span>
+          <span class="navn">{s.navn}</span>
+          <span class="tekst">{s.tekst}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section aria-labelledby="guardrails-tittel">
+    <h2 id="guardrails-tittel">Guardrails i praksis</h2>
+    <p class="broedtekst">
+      Denne siden er selv bygget slik. Hver iterasjon sjekkes mot en
+      compliance-port før kode, og en innholdssjekk kjører før hvert bygg: den
+      feiler hvis spillet i /sandbox har egne kopier av lenker eller påstander
+      som siden eier — én sannhet, håndhevet maskinelt. Beslutninger logges
+      append-only med reverseringskommando.
+    </p>
+    <p class="broedtekst">
+      Arbeidsmåten er skrevet ned slik at et team kan plukke den opp og bruke
+      den. Det er enablement i praktisk skala.
+    </p>
+  </section>
 </Side>
 
 <style>
@@ -30,8 +85,98 @@ import Side from '../layouts/Side.astro';
     margin: 0 0 var(--s-3);
   }
 
-  .dempet {
+  h2 {
+    font-size: 18px;
+    margin: var(--s-6) 0 var(--s-3);
+  }
+
+  .ingress {
     color: var(--dempet);
     max-width: 68ch;
+    margin: 0;
+  }
+
+  .readme {
+    background: var(--flate);
+    border: 1px solid var(--linje);
+    border-radius: var(--radius-md);
+    padding: var(--s-4);
+    margin-top: var(--s-4);
+    max-width: 560px;
+  }
+
+  .readme-rad {
+    display: flex;
+    gap: var(--s-3);
+    align-items: baseline;
+    padding: 5px 0;
+  }
+
+  .nokkel {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--aksent-2);
+    width: 130px;
+    flex-shrink: 0;
+  }
+
+  .verdi {
+    font-size: 14px;
+    color: var(--tekst);
+  }
+
+  .flyt {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flyt li {
+    display: grid;
+    grid-template-columns: 32px 200px 1fr;
+    gap: var(--s-3);
+    padding: var(--s-3) 0;
+    border-bottom: 1px solid var(--linje);
+    align-items: baseline;
+  }
+
+  .flyt li:last-child {
+    border-bottom: none;
+  }
+
+  .nr {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--aksent-1);
+  }
+
+  .navn {
+    font-weight: 700;
+    font-size: 14.5px;
+  }
+
+  .tekst {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--dempet);
+  }
+
+  @media (max-width: 680px) {
+    .flyt li {
+      grid-template-columns: 32px 1fr;
+    }
+
+    .flyt .tekst {
+      grid-column: 2;
+    }
+  }
+
+  .broedtekst {
+    max-width: 68ch;
+    line-height: 1.6;
+    color: var(--tekst);
   }
 </style>

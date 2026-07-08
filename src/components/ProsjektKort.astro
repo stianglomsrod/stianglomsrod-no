@@ -1,0 +1,92 @@
+---
+interface Lenke {
+  href: string;
+  label: string;
+  primaer?: boolean;
+}
+
+interface Props {
+  tag: string;
+  tittel: string;
+  tekst: string;
+  note?: string;
+  lenker?: Lenke[];
+  id?: string;
+}
+
+const { tag, tittel, tekst, note, lenker = [], id } = Astro.props;
+---
+
+<article class="kort" id={id}>
+  <p class="tag">{tag}</p>
+  <h3 class="tittel">{tittel}</h3>
+  <p class="tekst">{tekst}</p>
+  {note && <p class="note">{note}</p>}
+  {lenker.length > 0 && (
+    <p class="lenker">
+      {lenker.map((l) => (
+        <a href={l.href} class:list={[{ primaer: l.primaer }]} rel={l.href.startsWith('http') ? 'noreferrer noopener' : undefined}>
+          {l.label} →
+        </a>
+      ))}
+    </p>
+  )}
+</article>
+
+<style>
+  .kort {
+    background: var(--flate);
+    border: 1px solid var(--linje);
+    border-radius: var(--radius-md);
+    padding: var(--s-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+  }
+
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--aksent-1);
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .tittel {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--tekst);
+    margin: 0;
+  }
+
+  .tekst {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--dempet);
+    margin: 0;
+  }
+
+  .note {
+    font-size: 13.5px;
+    color: var(--tekst);
+    margin: 0;
+  }
+
+  .lenker {
+    display: flex;
+    gap: var(--s-4);
+    margin: var(--s-1) 0 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+
+  .lenker a {
+    text-decoration: none;
+  }
+
+  .lenker a.primaer {
+    color: var(--signal);
+  }
+</style>
