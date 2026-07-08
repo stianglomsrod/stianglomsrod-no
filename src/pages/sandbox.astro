@@ -1,8 +1,8 @@
 ---
 import Side from '../layouts/Side.astro';
+import HueVelger from '../components/HueVelger.astro';
 
-/* Skjelett: verkstedet. Hue-parameteren bor her (og på 404) — Done 12.
-   Spillet «Skamløs pitch» porteres hit (Done 21–22). */
+/* Verkstedet. Hue-parameteren bor her (og på 404) — Done 12. */
 ---
 
 <Side
@@ -24,6 +24,7 @@ import Side from '../layouts/Side.astro';
     </span>
     <span class="eks-cta">spill →</span>
   </a>
+  <HueVelger />
 </Side>
 
 <style>
@@ -31,7 +32,7 @@ import Side from '../layouts/Side.astro';
     font-family: var(--font-mono);
     font-size: var(--tekst-label);
     letter-spacing: 0.12em;
-    color: var(--dempet);
+    color: var(--hue-aksent);
     margin: var(--s-7) 0 var(--s-2);
   }
 
@@ -67,7 +68,7 @@ import Side from '../layouts/Side.astro';
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.1em;
-    color: var(--aksent-1);
+    color: var(--hue-aksent);
   }
 
   .eks-tittel {

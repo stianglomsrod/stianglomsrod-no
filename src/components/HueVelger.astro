@@ -1,0 +1,127 @@
+---
+/* Sandbox-hue (Done 12): én oklch-vinkel styrer aksentene på /sandbox + 404.
+   L og C er låst i tokens (72 % mørk / 48 % lys), så AA-kontrasten holder
+   uansett tone. Persisteres i localStorage 'hue' (tall, clampes 0–360) —
+   cookiefritt. Andre sider leser aldri verdien. */
+---
+
+<div class="hue-modul">
+  <div class="hue-topp">
+    <span class="hue-label">MODUL C · HUE-PARAMETER</span>
+    <span class="hue-verdi" id="hue-verdi" aria-live="polite">--hue: 145</span>
+  </div>
+  <input
+    type="range"
+    id="hue-slider"
+    min="0"
+    max="360"
+    step="1"
+    value="145"
+    aria-label="Roter fargetonen"
+  />
+  <div class="hue-chips" aria-hidden="true">
+    <span class="hue-chip aksent"></span>
+    <span class="hue-chip flate"></span>
+  </div>
+  <p class="hue-spec">
+    én <code>@property</code>-registrert oklch-vinkel · L/C låst → AA holder
+    uansett tone · persisteres i localStorage, cookiefritt · gjelder kun
+    /sandbox og 404
+  </p>
+</div>
+
+<style>
+  .hue-modul {
+    background: var(--flate);
+    border: 1px solid var(--linje);
+    border-radius: var(--radius-md);
+    padding: var(--s-4);
+    max-width: 480px;
+    margin-top: var(--s-4);
+  }
+
+  .hue-topp {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--s-2);
+    margin-bottom: var(--s-3);
+  }
+
+  .hue-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--hue-aksent);
+  }
+
+  .hue-verdi {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--hue-aksent);
+  }
+
+  input[type='range'] {
+    width: 100%;
+    accent-color: var(--hue-aksent);
+    cursor: pointer;
+    min-height: 44px;
+    margin: 0;
+  }
+
+  input[type='range']:focus-visible {
+    outline: 2px solid var(--hue-aksent);
+    outline-offset: 2px;
+  }
+
+  .hue-chips {
+    display: flex;
+    gap: var(--s-2);
+    margin-top: var(--s-2);
+  }
+
+  .hue-chip {
+    width: 28px;
+    height: 16px;
+    border-radius: 4px;
+    border: 1px solid var(--linje);
+  }
+
+  .hue-chip.aksent {
+    background: var(--hue-aksent);
+  }
+
+  .hue-chip.flate {
+    background: var(--hue-flate);
+  }
+
+  .hue-spec {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    line-height: 1.7;
+    color: var(--dempet);
+    margin: var(--s-3) 0 0;
+  }
+
+  .hue-spec code {
+    color: var(--konst);
+  }
+</style>
+
+<script>
+  import { lesHue, settHue } from '../lib/hue';
+
+  const slider = document.getElementById('hue-slider') as HTMLInputElement | null;
+  const verdi = document.getElementById('hue-verdi');
+
+  const oppdater = (h: number, lagre: boolean) => {
+    settHue(h, lagre);
+    if (slider) slider.value = String(h);
+    if (verdi) verdi.textContent = `--hue: ${h}`;
+  };
+
+  const lagret = lesHue();
+  if (lagret !== null) oppdater(lagret, false);
+
+  slider?.addEventListener('input', () => oppdater(Number(slider.value), true));
+</script>

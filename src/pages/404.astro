@@ -1,8 +1,7 @@
 ---
 import Side from '../layouts/Side.astro';
 
-/* Skjelett: den lekne roboten (arver sandbox-hue) bygges i sandbox-steget
-   (Done 12). */
+/* Den lekne roboten arver sandbox-hue (Done 12) via arvHue() under. */
 ---
 
 <Side title="404 — Stian Glomsrød" description="Fant ikke ruta.">
@@ -50,3 +49,9 @@ import Side from '../layouts/Side.astro';
     font-size: 0.9em;
   }
 </style>
+
+<script>
+  import { arvHue } from '../lib/hue';
+
+  arvHue();
+</script>

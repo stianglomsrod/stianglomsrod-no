@@ -95,6 +95,8 @@
     --godkjent: #4e7d3d;     /* 4.8:1 AA */
     --heat-0: #efe9dc; --heat-1: #d6e4c4; --heat-2: #adcf8f;
     --heat-3: #7fae5f; --heat-4: #4e7d3d;
+    /* Modul C i dagmodus (guide v1 §07): L senkes til 48% så AA holder på papir. */
+    --hue-aksent: oklch(48% 0.17 var(--hue));
     /* Kodeflate-variablene endres IKKE — den er ankeret. */
   }
 }
@@ -117,6 +119,8 @@
   --godkjent: #4e7d3d;     /* 4.8:1 AA */
   --heat-0: #efe9dc; --heat-1: #d6e4c4; --heat-2: #adcf8f;
   --heat-3: #7fae5f; --heat-4: #4e7d3d;
+  /* Modul C i dagmodus (guide v1 §07): L senkes til 48% så AA holder på papir. */
+  --hue-aksent: oklch(48% 0.17 var(--hue));
   /* Kodeflate-variablene endres IKKE — den er ankeret. */
 }
 
